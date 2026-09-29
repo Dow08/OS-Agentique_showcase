@@ -133,6 +133,24 @@ Managing a team means knowing who is working, on what, for how long and at what 
 
 ---
 
+## Live tracking: see every agent at work, as it happens
+
+Profiling tells me what happened. **Live tracking** shows me what is happening *right now*, even when several tasks run in parallel. The goal: never lose sight of the team, and spot a drift before it becomes a problem.
+
+**Who is working, on what, since when.** Refreshed every 3 seconds. Here, three agents work at the same time: the Architect designs an application, Mira analyses a brute-force attack, Léo runs a web watch. Each one shows its task and how long it has been running, and a click opens the detail.
+
+![Three agents working in parallel, followed live](assets/live-tracking.png)
+
+**Every step, as it happens.** In the conversation, each real action appears live: the tool used, how long it took, the start of what it returned, and the agent a task is delegated to.
+
+![Live steps of a task: delegations, tool calls, review rounds](assets/step6-live.png)
+
+**Automatic drift alerts.** Deterministic rules, not an AI, watch every running task and raise an alert when something leaves its frame: an attempt to write during a read-only task, a delegation to a sensitive department, a loop, repeated failures.
+
+> **Why it matters:** with several agents working at once, control only exists if you can *see*. Live tracking keeps a human eye on the whole team.
+
+---
+
 ## Choose the brain, keep the team
 
 Hermes stays the same; only the brain behind him changes. From the **Systems** tab, I switch the whole team from a local model running on my GPU to Claude, and back, in about fifteen seconds. The conversation continues without losing its history.

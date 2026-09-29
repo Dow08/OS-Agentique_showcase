@@ -131,6 +131,24 @@ Diriger une équipe, c'est savoir qui travaille, sur quoi, combien de temps et p
 
 ---
 
+## Suivi en direct : voir chaque agent travailler, au moment où il travaille
+
+Le profilage me dit ce qui s'est passé. Le **suivi en direct** me montre ce qui se passe *maintenant*, même quand plusieurs tâches tournent en parallèle. L'objectif : ne jamais perdre le visuel sur l'équipe, et repérer une dérive avant qu'elle ne pose problème.
+
+**Qui travaille, sur quoi, depuis quand.** Rafraîchi toutes les 3 secondes. Ici, trois agents travaillent en même temps : l'Architecte conçoit une application, Mira analyse une attaque par force brute, Léo fait une veille sur le web. Chacun affiche sa tâche et depuis combien de temps il y travaille ; un clic ouvre le détail.
+
+![Trois agents au travail en parallèle, suivis en direct](assets/live-tracking.png)
+
+**Chaque étape, au moment où elle se produit.** Dans la conversation, chaque action réelle s'affiche en direct : l'outil utilisé, sa durée, le début de ce qu'il a renvoyé, et l'agent à qui une tâche est déléguée.
+
+![Étapes d'une tâche en direct : délégations, appels d'outils, tours de relecture](assets/step6-live.png)
+
+**Des alertes de dérive automatiques.** Des règles fixes, pas une IA, surveillent chaque tâche en cours et donnent l'alerte quand quelque chose sort du cadre : une tentative d'écriture pendant une tâche en lecture seule, une délégation vers un pôle sensible, une boucle, des échecs répétés.
+
+> **Pourquoi c'est important :** quand plusieurs agents travaillent en même temps, le contrôle n'existe que si l'on *voit*. Le suivi en direct garde un œil humain sur toute l'équipe.
+
+---
+
 ## Changer de cerveau, garder l'équipe
 
 Hermes reste le même ; seul le cerveau derrière lui change. Depuis l'onglet **Systèmes**, je fais passer toute l'équipe d'un modèle local, sur ma carte graphique, à Claude, et inversement, en une quinzaine de secondes. La conversation continue sans perdre son historique.
