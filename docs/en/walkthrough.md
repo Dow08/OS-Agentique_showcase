@@ -46,7 +46,39 @@ I refused this action (here, the same interface on a phone). Hermes confirms: **
 
 ---
 
-## Step 5 · Check the health of the system
+## Step 5 · Watch the team work
+
+I switch to **Execute** mode and ask for real work: search the web for the official French recommendations on passwords (ANSSI), then write a 5-point summary file. I approve, and every real step appears live: the web search, how long it took, even the start of what the tool returned.
+
+![A task running, each step shown live](../../assets/step5-live.png)
+
+Two minutes later, Hermes reports what he did. The deliverables are listed with an **Open folder** button. *(The local folder path is blurred.)*
+
+![The finished task and its deliverables](../../assets/step5-done.png)
+
+> **What it shows:** transparency. I see *what* is being done, step by step, not a spinning wheel. And the result is a real file, not a promise.
+
+---
+
+## Step 6 · A CV built from a job ad (fictional candidate)
+
+For this demo, the CV tool runs on an isolated copy with a **fictional candidate**, Alex Martin. I paste a (fictional) job ad for a junior SOC analyst and ask: *“Create my CV for this offer.”*
+
+Nora, the HR manager, starts the CV circuit: Camille writes, Sacha reviews. Round 1 was not validated, so Camille revised the CV and Sacha validated it at round 2. When the local model struggled, a step was automatically handed over to Claude: that is the fallback visible in the task list.
+
+![The CV circuit running: delegations, CV tool calls, review rounds](../../assets/step6-live.png)
+
+The validated CV is delivered (design PDF, ATS-friendly PDF, Word, plus a provenance file tracing every line back to its source). And because the offer asks for things the profile does not show (technical English, Microsoft Sentinel…), **Nora asks the candidate** instead of inventing them. *(The local folder path is blurred.)*
+
+![CV validated at round 2, deliverables and Nora's questions](../../assets/step6-done.png)
+
+<p align="center"><img src="../../assets/step6-cv-fictif.png" alt="The generated CV of the fictional candidate" width="520"><br/><i>The CV produced for the fictional candidate: one page, tailored to the offer, every line traceable.</i></p>
+
+> **What it shows:** a multi-agent pipeline with built-in quality control, and an AI that asks instead of inventing.
+
+---
+
+## Step 7 · Check the health of the system
 
 Everything the team does is measured, read from the engine's own records: who worked when, for how long, with which tools, how many tokens and at what cost. Only Claude, the cloud fallback, costs anything: the local brain is free.
 
@@ -58,7 +90,7 @@ Everything the team does is measured, read from the engine's own records: who wo
 
 ---
 
-## Step 6 · The system knows itself
+## Step 8 · The system knows itself
 
 Before each decision, the director receives a **real map** of his team, his skills and his tools, generated from what is actually installed.
 
