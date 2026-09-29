@@ -39,7 +39,8 @@ Le projet compte 55 décisions d'architecture écrites (ADR). En voici dix qui m
 ### 7. Un cerveau local, choisi par la mesure
 **Problème :** les modèles cloud coûtent de l'argent et font sortir des données ; mon portable n'a pas de carte graphique.
 **Décision :** un cerveau par machine. Sur le PC fixe, un modèle local choisi après en avoir comparé plusieurs sur des tâches d'agent (9/10, environ 5 s par échange simple). Sur le portable, un modèle cloud gratuit. Claude n'intervient qu'en repli explicite pour le travail exigeant sur le CV.
-**Pourquoi c'est important :** coût, confidentialité et performance ont été arbitrés avec des données, pas des suppositions.
+**Depuis :** le cerveau se choisit depuis l'interface, en local ou avec Claude (Opus 5.5, Sonnet 5, Haiku 4.5), pour toute l'équipe en un clic, et certains agents gardent un cerveau fixe (la Red Cell toujours en local).
+**Pourquoi c'est important :** coût, confidentialité et performance ont été arbitrés avec des données, pas des suppositions, et le choix final reste le mien, tâche par tâche.
 
 ### 8. Rendre le travail visible
 **Problème :** Hermes a un jour répondu « Je lance une recherche… » sans appeler le moindre outil.

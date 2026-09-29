@@ -39,7 +39,8 @@ The project holds 55 written decision records (ADRs). Here are ten that best sho
 ### 7. A local brain, chosen by measurement
 **Problem:** cloud models cost money and send data out; my laptop has no GPU.
 **Decision:** one brain per machine. On my desktop, a local model chosen after benchmarking several on agent tasks (9/10, about 5 s per simple exchange). On the laptop, a free cloud model. Claude is used only as an explicit fallback for demanding CV work.
-**Why it matters:** cost, privacy and performance were weighed with data, not guesses.
+**Since then:** the brain became switchable from the interface, local or Claude (Opus 5.5, Sonnet 5, Haiku 4.5), for the whole team in one click, with some agents pinned to a fixed brain (the Red Cell always local).
+**Why it matters:** cost, privacy and performance were weighed with data, not guesses, and the final choice stays mine, task by task.
 
 ### 8. Make the work visible
 **Problem:** Hermes once answered “I'm launching a search…” without calling a single tool.

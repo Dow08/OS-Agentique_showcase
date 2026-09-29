@@ -17,7 +17,7 @@ OS-Agentique turns a Windows 11 workstation into a small, well-run company of AI
 | | |
 |---|---|
 | **20 agents** in **5 departments** | Development · HR & job search · Defensive security · Red Cell · Coworking |
-| **100 % local AI brain** | a 25-billion-parameter model on my own GPU (RTX 4080): **0 $** per request on the local brain; the cloud is only an explicit, limited fallback (0.32 $ over the last week) |
+| **Brain of your choice** | switch in one click: a 25-billion-parameter local model on my own GPU (RTX 4080, **0 $** per request) or Claude (Opus 5.5, Sonnet 5, Haiku 4.5…) when a task needs more power |
 | **Voice interface** | wake word “Hermès, …”, local speech recognition and synthesis, ~5 s per simple turn |
 | **Human in the loop** | every medium- or high-risk action waits for my approval |
 | **607 automated tests**, all passing | + contract tests on every external tool it depends on |
@@ -37,7 +37,7 @@ I wanted the opposite: **a team I can trust because it is organised like a real 
 - **Rules before power.** Every task is scored for risk; anything that can change something waits for me.
 - **Proof, not promises.** *“The AI says it’s done”* is never accepted as proof: results are verified before a task is marked complete.
 - **Memory that lasts.** The team keeps a journal and learns from what blocked it, independently of the AI model in use.
-- **Private by design.** The brain runs locally; personal data (my CV, for example) is technically prevented from ever reaching GitHub.
+- **Private by design.** The brain can run entirely on my PC; my personal data (my CV, for example) is only ever handled by the local model or Claude, and is technically prevented from reaching GitHub.
 
 ➡️ The full story of how I designed it: [**Design & architecture**](docs/en/design.md)
 
@@ -94,7 +94,7 @@ flowchart TD
 
 ## Proof of concept: see it working
 
-Everything below was captured on the real interface, with real answers from the local model.
+Everything below was captured on the real interface, with real answers from the AI model.
 
 | Quick stats in the side panel | Self-knowledge map |
 |---|---|
@@ -133,6 +133,20 @@ Managing a team means knowing who is working, on what, for how long and at what 
 
 ---
 
+## Choose the brain, keep the team
+
+Hermes stays the same; only the brain behind him changes. From the **Systems** tab, I switch the whole team from a local model running on my GPU to Claude, and back, in about fifteen seconds. The conversation continues without losing its history.
+
+<p align="center"><img src="assets/brain-selector.png" alt="Brain selector: local model or Claude, with sub-model" width="380"></p>
+
+- **Local** when I want privacy and zero cost; **Claude Opus 5.5** for demanding work; **Haiku** when speed matters more than depth.
+- **Some agents keep a fixed brain**, whatever the team uses: the director and part of the development team (Ada, Linus, the Architect) run on Claude Sonnet 5, and the **Red Cell always stays local**.
+- **Guard-rails included:** only models from a strict, tested list can be chosen (no free input), and the HR agents that handle my personal data refuse any provider other than the local model or Claude.
+
+> **Why it matters:** the right tool for each job. Power, speed, cost and privacy become a choice, not a constraint.
+
+---
+
 ## What it can do
 
 - **Talk.** Continuous voice conversation (“Hermès, stop” interrupts him), or typing.
@@ -151,7 +165,7 @@ Managing a team means knowing who is working, on what, for how long and at what 
 | Layer | Technology |
 |---|---|
 | Agent engine | [Hermes Agent](https://github.com/NousResearch/hermes-agent) (Nous Research): profiles, skills, memory |
-| AI brain | `gemma4-hermes`, a local model served by Ollama on an RTX 4080; cloud fallback on the laptop |
+| AI brain | switchable from the interface: local models served by Ollama (`gemma4-hermes` on an RTX 4080) or Claude (Opus 5.5, Fable 5.1, Sonnet 5, Haiku 4.5) through a subscription |
 | Orchestration core | Node.js / TypeScript, **zero runtime dependency** |
 | Interface | React, TypeScript, Tailwind, Vite |
 | Voice | Whisper (speech-to-text) and Kokoro (text-to-speech), 100 % local |

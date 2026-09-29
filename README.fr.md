@@ -17,7 +17,7 @@ OS-Agentique transforme un poste Windows 11 en une petite entreprise d'agents IA
 | | |
 |---|---|
 | **20 agents** répartis en **5 pôles** | Développement · RH & emploi · Sécurité défensive · Red Cell · Coworking |
-| **Cerveau IA 100 % local** | un modèle de 25 milliards de paramètres sur ma propre carte graphique (RTX 4080) : **0 $** par requête sur le cerveau local ; le cloud n'est qu'un repli explicite et encadré (0,32 $ sur la dernière semaine) |
+| **Le cerveau de son choix** | changement en un clic : un modèle local de 25 milliards de paramètres sur ma propre carte graphique (RTX 4080, **0 $** par requête) ou Claude (Opus 5.5, Sonnet 5, Haiku 4.5…) quand une tâche demande plus de puissance |
 | **Interface vocale** | mot d'activation « Hermès, … », reconnaissance et synthèse vocales locales, ~5 s par échange simple |
 | **L'humain décide** | toute action à risque moyen ou élevé attend mon approbation |
 | **607 tests automatisés**, tous au vert | + des tests de contrat sur chaque outil externe utilisé |
@@ -37,7 +37,7 @@ Je voulais l'inverse : **une équipe digne de confiance parce qu'elle est organi
 - **Des règles avant le pouvoir.** Chaque tâche reçoit un niveau de risque ; tout ce qui peut modifier quelque chose m'attend.
 - **Des preuves, pas des promesses.** *« L'IA dit que c'est fait »* n'est jamais une preuve : le résultat est vérifié avant que la tâche soit close.
 - **Une mémoire durable.** L'équipe tient un journal et apprend de ce qui l'a bloquée, quel que soit le modèle d'IA utilisé.
-- **Privé par construction.** Le cerveau tourne en local ; les données personnelles (mon CV, par exemple) sont techniquement empêchées d'arriver sur GitHub.
+- **Privé par construction.** Le cerveau peut tourner entièrement sur mon PC ; mes données personnelles (mon CV, par exemple) ne sont traitées que par le modèle local ou par Claude, et sont techniquement empêchées d'arriver sur GitHub.
 
 ➡️ Toute l'histoire de sa conception : [**Conception & architecture**](docs/fr/conception.md)
 
@@ -94,7 +94,7 @@ flowchart TD
 
 ## Preuve de concept : le voir fonctionner
 
-Tout ce qui suit a été capturé sur l'interface réelle, avec de vraies réponses du modèle local.
+Tout ce qui suit a été capturé sur l'interface réelle, avec de vraies réponses du modèle d'IA.
 
 | Chiffres rapides du panneau latéral | Carte du système |
 |---|---|
@@ -131,6 +131,20 @@ Diriger une équipe, c'est savoir qui travaille, sur quoi, combien de temps et p
 
 ---
 
+## Changer de cerveau, garder l'équipe
+
+Hermes reste le même ; seul le cerveau derrière lui change. Depuis l'onglet **Systèmes**, je fais passer toute l'équipe d'un modèle local, sur ma carte graphique, à Claude, et inversement, en une quinzaine de secondes. La conversation continue sans perdre son historique.
+
+<p align="center"><img src="assets/brain-selector.png" alt="Sélecteur de cerveau : modèle local ou Claude, avec sous-modèle" width="380"></p>
+
+- **En local** quand je veux la confidentialité et le coût zéro ; **Claude Opus 5.5** pour un travail exigeant ; **Haiku** quand la rapidité compte plus que la profondeur.
+- **Certains agents gardent un cerveau fixe**, quel que soit celui de l'équipe : le directeur et une partie de l'équipe de développement (Ada, Linus, l'Architecte) tournent sur Claude Sonnet 5, et la **Red Cell reste toujours en local**.
+- **Des garde-fous inclus :** seuls des modèles d'une liste stricte et testée peuvent être choisis (aucune saisie libre), et les agents RH qui manipulent mes données personnelles refusent tout fournisseur autre que le modèle local ou Claude.
+
+> **Pourquoi c'est important :** le bon outil pour chaque travail. Puissance, rapidité, coût et confidentialité deviennent un choix, pas une contrainte.
+
+---
+
 ## Ce qu'il sait faire
 
 - **Converser.** Conversation vocale continue (« Hermès, stop » l'interrompt), ou au clavier.
@@ -149,7 +163,7 @@ Diriger une équipe, c'est savoir qui travaille, sur quoi, combien de temps et p
 | Couche | Technologie |
 |---|---|
 | Moteur d'agents | [Hermes Agent](https://github.com/NousResearch/hermes-agent) (Nous Research) : profils, skills, mémoire |
-| Cerveau IA | `gemma4-hermes`, un modèle local servi par Ollama sur une RTX 4080 ; repli cloud sur le portable |
+| Cerveau IA | au choix depuis l'interface : modèles locaux servis par Ollama (`gemma4-hermes` sur une RTX 4080) ou Claude (Opus 5.5, Fable 5.1, Sonnet 5, Haiku 4.5) par abonnement |
 | Cœur d'orchestration | Node.js / TypeScript, **aucune dépendance à l'exécution** |
 | Interface | React, TypeScript, Tailwind, Vite |
 | Voix | Whisper (voix → texte) et Kokoro (texte → voix), 100 % local |
