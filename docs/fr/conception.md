@@ -38,7 +38,7 @@ flowchart TB
         direction LR
         U["Interface Jarvis<br/>voix + écran"]
         CORE["Cœur : politique → exécution → vérification"]
-        TEAM["Équipe de 20 agents<br/>+ règles + mémoire"]
+        TEAM["Équipe de 30 agents<br/>+ règles + mémoire"]
     end
     subgraph L2["Hermes Agent : moteur open source"]
         E["profils · skills · sessions"]
@@ -93,9 +93,9 @@ Je viens de la cybersécurité : le système est donc conçu comme un réseau d�
 
 ## 6. Ma façon de travailler : décisions écrites, preuves exigées
 
-- **55 décisions d'architecture (ADR).** Chacune précise le contexte, la décision, les alternatives écartées et la *preuve*. Ce qui est décidé est écrit, pour que la session suivante (humaine ou IA) ne le défasse pas.
+- **98 décisions d'architecture (ADR).** Chacune précise le contexte, la décision, les alternatives écartées et la *preuve*. Ce qui est décidé est écrit, pour que la session suivante (humaine ou IA) ne le défasse pas.
 - **Un sas avant chaque fonctionnalité** : *Quoi ? Pourquoi ? Interface ? Sécurité ? Test ? Retour arrière ?*, avec une réponse **avant** d'écrire le code.
-- **607 tests automatisés**, plus des *tests de contrat* qui vérifient que chaque outil externe se comporte toujours comme prévu après une mise à jour.
+- **1 296 tests unitaires au vert (0 échec)**, plus des *tests de contrat* qui vérifient que chaque outil externe se comporte toujours comme prévu après une mise à jour.
 - **Le déterministe d'abord.** Ce qui est mécanique est fait par un simple script, pas par une IA. L'IA est réservée à ce qui demande vraiment du jugement.
 - **Reproductible.** Une commande PowerShell reconstruit tout l'environnement sur un PC neuf.
 

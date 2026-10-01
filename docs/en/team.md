@@ -2,7 +2,7 @@
 
 # Meet the team
 
-20 agents, organised like a company. Each agent has an identity card (its “soul”) that sets its mission, its rules and whether it is allowed to write.
+30 agents, organised like a company. Each agent has an identity card (its “soul”) that sets its mission, its rules and whether it is allowed to write.
 
 **The golden rule:** managers read, decide and delegate. Only designated workers (marked ✍️) are allowed to write, and even then only within the limits of an approved task.
 
@@ -13,10 +13,15 @@ flowchart TD
     H --> RH["<b>Nora</b> · HR & job search"]
     H --> SEC["<b>Alix</b> · Defensive security"]
     H --> RED["<b>Strike</b> · Red Cell"]
+    H --> TIK["<b>TIK</b> · Digital commerce"]
+    H --> SG["<b>Margot</b> · Secretariat"]
+    H -.-> IR["<b>Iris</b> · Web navigator"]
     DEV --> A1["Architect"] & A2["Linus ✍️"] & A3["Grace"] & A4["Tester ✍️"] & A5["ISO auditor"]
     RH --> B1["Camille ✍️"] & B2["Sacha"] & B3["Léo"] & B4["Inès"]
     SEC --> C1["Mira ✍️"] & C2["Elias"] & C3["Owen"]
     RED --> D1["Spectre"] & D2["Breach"] & D3["Aegis"]
+    TIK --> E1["Noé ✍️"] & E2["Jules ✍️"] & E3["Lina"] & E4["Maya"] & E5["Hugo"] & E6["Clara"]
+    SG --> F1["Hélène"]
 ```
 
 ---
@@ -83,6 +88,39 @@ Adversary emulation, **for defensive purposes**, under strict supervision.
 - every task in this department is **forced to the highest risk level**, whatever the request;
 - it therefore **always waits for my manual approval**; the “Auto” mode can never approve it;
 - a real action is always a gesture I perform myself, on a target I am authorised to test.
+
+---
+
+## 🛒 Digital commerce: TIK
+
+A **full product department** to build and run a real website.
+
+| Agent | Role |
+|---|---|
+| **TIK** (manager) | leads the department, frames missions and budgets |
+| **Noé** ✍️ | website designer |
+| **Jules** ✍️ | web copywriter |
+| **Lina** | SEO analyst |
+| **Maya** | market researcher |
+| **Hugo** | website infrastructure analyst |
+| **Clara** | legal: legal groundwork, compliance |
+
+*A strict “web ⊕ privilege” boundary: an agent has the web **or** a server privilege, never both in the same move. Every fact is sourced; a publication cap bounds what can go live.*
+
+---
+
+## 🗂️ Secretariat: Margot
+
+| Agent | Role |
+|---|---|
+| **Margot** (manager) | recurring admin work (invoices, documents); exposes aggregates only |
+| **Hélène** | archivist: local read of documents, only |
+
+---
+
+## 🧭 Iris, the web navigator
+
+The **only** agent allowed to drive a browser, always **in the operator's sight** and behind a deterministic guard. Isolating browsing in a single, watched agent keeps a booby-trapped page from hijacking the rest of the team.
 
 ---
 

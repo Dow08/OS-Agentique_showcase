@@ -16,12 +16,13 @@ OS-Agentique turns a Windows 11 workstation into a small, well-run company of AI
 
 | | |
 |---|---|
-| **20 agents** in **5 departments** | Development · HR & job search · Defensive security · Red Cell · Coworking |
+| **30 agents** in **6 departments** | Development · HR & job search · Defensive security · Red Cell · Digital commerce · Secretariat (+ a shared Coworking workspace) |
+| **A kernel that keeps the team in check** | everything that runs starts through a named kernel that checks the caller's identity, grants **capability tokens** re-verified on every tool call, and can stop anything down to a single tool |
 | **Brain of your choice** | switch in one click: a 25-billion-parameter local model on my own GPU (RTX 4080, **0 $** per request) or Claude (Opus 5.5, Sonnet 5, Haiku 4.5…) when a task needs more power |
 | **Voice interface** | wake word “Hermès, …”, local speech recognition and synthesis, ~5 s per simple turn |
-| **Human in the loop** | every medium- or high-risk action waits for my approval |
-| **607 automated tests**, all passing | + contract tests on every external tool it depends on |
-| **55 written design decisions** (ADRs) | each one records the context, the choice, the rejected alternatives and the evidence |
+| **Human in the loop** | every medium- or high-risk action waits for my approval; a high-risk action checks my presence with **Windows Hello** |
+| **1,296 unit tests passing** (0 failures, run on the day of this update) | + contract tests on every external tool and Pester tests on the PowerShell install |
+| **98 written design decisions** (ADRs) | each one records the context, the choice, the rejected alternatives and the evidence |
 | **Work in progress** | actively developed: new capabilities are added regularly |
 
 ---
@@ -74,19 +75,27 @@ flowchart TD
     H --> RH["<b>Nora</b><br/>HR & job search"]
     H --> SEC["<b>Alix</b><br/>Defensive security"]
     H --> RED["<b>Strike</b><br/>Red Cell"]
+    H --> TIK["<b>TIK</b><br/>Digital commerce"]
+    H --> SEC2["<b>Margot</b><br/>Secretariat"]
+    H -.-> IRIS["<b>Iris</b><br/>Web navigator"]
     DEV --> DEV1["Architect · Linus (developer)<br/>Grace (reviewer) · Tester<br/>ISO 27001 auditor"]
     RH --> RH1["Camille (CV) · Sacha (recruiter)<br/>Léo (job watch) · Inès (career analyst)"]
     SEC --> SEC1["Mira (detection & response)<br/>Elias (compliance) · Owen (pentest methodology)"]
     RED --> RED1["Spectre · Breach (analysts)<br/>Aegis (ethics advisor)"]
+    TIK --> TIK1["Noé (design) · Jules (copy)<br/>Lina (SEO) · Maya (market research)<br/>Hugo (infra) · Clara (legal)"]
+    SEC2 --> SEC21["Hélène (archivist)"]
 ```
 
 | Department | What it does for me |
 |---|---|
 | **Development** — Ada | designs, writes, reviews and tests code; can hand coding jobs to Claude Code or Cursor, always under approval |
-| **HR & job search** — Nora | finds and sorts job offers, turns a job ad into a tailored CV that is **reviewed before delivery**, drafts cover letters and interview prep |
-| **Defensive security** — Alix | detection rules, incident analysis, ISO 27001 compliance, pentest methodology and reports, backed by a library of 759 defensive guides |
+| **HR & job search** — Nora | finds and sorts job offers (real sources: JobSpy, France Travail), turns a job ad into a tailored CV that is **reviewed before delivery**, drafts cover letters and interview prep |
+| **Defensive security** — Alix | detection rules, incident analysis, ISO 27001 compliance, pentest methodology and reports, backed by a **local SOC** (see below) |
 | **Red Cell** — Strike | adversary emulation for defensive purposes. Every task in this department is **forced to the highest risk level**: always a manual approval, never automatic, with a built-in **ethics advisor** (Aegis) who checks authorisation, scope and legality |
-| **Coworking** | a shared workspace where the team and I work on a project together, with a readable activity feed and a tamper-evident log |
+| **Digital commerce** — TIK | a full product department (design, copy, SEO, market research, infra, legal) to build and run a real website, behind a strict “web ⊕ privilege” boundary with sourced facts |
+| **Secretariat** — Margot | recurring admin work (invoices, documents), local read only, aggregates only |
+| **Web navigator** — Iris | the **only** agent that drives a browser, in the operator's sight, behind a deterministic guard |
+| **Coworking** *(mode)* | a shared workspace where the team and I work on a project together, with a readable activity feed and a tamper-evident log |
 
 ➡️ Who each agent is and what it does: [**Meet the team**](docs/en/team.md)
 
@@ -165,13 +174,73 @@ Hermes stays the same; only the brain behind him changes. From the **Systems** t
 
 ---
 
+## Under the hood: a kernel for agents
+
+At first, the interface was the safety layer. Now the safety is **in the kernel**. Everything that runs — a conversation turn, a task, a sub-agent, a scheduled script — starts through a **named kernel**, a single scheduler that shares its state across processes. Nothing runs “on the side” any more.
+
+- **Caller identity.** Every turn knows *who* asked for it. The director himself talks to the kernel in his own name; nothing acts anonymously.
+- **Capability tokens.** The kernel grants a turn a precise set of rights (which tools, what scope), and that token is **re-checked on every tool call** — not just at the start. An agent cannot widen its own power mid-way.
+- **Kill switch down to the tool.** The emergency stop doesn't just cancel a task: it applies at the level of a single tool, across all profiles, and the browser guard enforces it itself.
+- **Bounded child processes.** When an agent launches Claude Code, Cursor or a shell, the child inherits **no secret names**, its output is bounded, and it is genuinely interruptible.
+- **A single, chained, signed journal.** Every event is written to a hash-chained, signed journal: any tampering shows.
+
+> **Why it matters:** a security rule is only worth it if the system enforces it itself. Moving the boundary from the screen into the kernel turns a courtesy into a guarantee.
+
+---
+
+## A local SOC for defensive security
+
+The defensive-security department does more than give advice: it is backed by a **security operations centre (SOC) that runs on the machine**, wired to the kernel.
+
+- **Real telemetry** (including Sysmon with a home-grown config), normalised, where every network egress is tied back to the agent that caused it.
+- **A register of agent egress**: you see, and classify, what each agent attempts outbound; a learning firewall tells normal from abnormal.
+- **A catalogue broker**: privileged actions go through a closed list, with **per-action UAC elevation** — never a blank cheque.
+- **Chained audit, seal, emergency stop and safe mode** to keep control even during an incident.
+
+> Presented here in outline only: this repository shows the intent and the safeguards, not the operational detail.
+
+---
+
+## The agents' lounge: a team that talks to itself
+
+A team isn't just a delegation tree. OS-Agentique has a **Lounge**: a visible thread where agents talk to each other, on the **local** brain and within a policy-bounded frame.
+
+- An agent can **open a ticket**, mention another, and the thread follows the piece of work it spawned.
+- Agents **propose memory notes**; nothing is kept without my approval (see below).
+- A **weekly retrospective** runs on its own, and the lounge can **run for weeks unattended** (an unbreakable dispatcher, inactive tickets closed, bounded history, a stuck-signal).
+- A piece of work proposed in the lounge only opens as a Coworking space **when I decide so**.
+
+> **Why it matters:** this is where “a team” stops being a metaphor. Collective work becomes legible — and stays under control.
+
+---
+
+## Memory, but under approval
+
+Agents learn, but they don't decide on their own what to keep. Jarvis has a **“Pending memories”** queue: each proposed note is shown to me to **Approve** or **Reject**, and it is Hermes Agent itself that applies my decision. What the operator asks to remember **about himself** is written during his own turns; everything else waits for my go-ahead.
+
+---
+
+## A real product department: digital commerce (TIK)
+
+Beyond code and job search, the team can carry a **commercial project** end to end. The TIK department brings together design, copy, SEO, market research, infrastructure and legal around a real website.
+
+- **A “web ⊕ privilege” boundary:** an agent may have the web **or** a privilege on the server, never both in the same move.
+- **Facts with provenance:** nothing is asserted without a source; decisions rest on dated, traceable facts.
+- **Missions and budgets:** work is framed by goals and ceilings (including a **publication cap**), with a legal agent for the legal groundwork.
+- **A hosting gateway, read-first**, writes later, token in the vault.
+
+---
+
 ## What it can do
 
 - **Talk.** Continuous voice conversation (“Hermès, stop” interrupts him), or typing.
 - **Delegate real work.** Code, documents, research: split across the right agents, followed live on screen step by step.
 - **Build a CV from a job ad.** Camille writes, Sacha reviews, delivery happens only if no blocking issue remains. Missing information becomes a question to me, never an invention.
 - **Hunt for jobs.** Daily watch, sorting, a Notion mirror, follow-ups. The final “apply” click is always mine.
-- **Support security work.** Detection rules, compliance checks, methodology and reports.
+- **Support security work.** Detection rules, compliance checks, methodology and reports, backed by a local SOC.
+- **Run a commercial project.** The TIK department designs, writes, optimises for SEO and frames a real website, budgets and legal groundwork included.
+- **Work as a team, visibly.** The Lounge lets agents coordinate, open tickets and hold a retro — under my control.
+- **Learn under approval.** Memory notes are proposed to me; I approve or reject.
 - **Know itself.** A health check (`doctor`), a live map of the team, profiling of who did what, when and at what cost.
 - **Protect itself.** Automatic hourly backups with a secret scanner that blocks any leak.
 - **Propose improvements.** It suggests the agents or skills it lacks, but never activates them on its own.
@@ -184,11 +253,14 @@ Hermes stays the same; only the brain behind him changes. From the **Systems** t
 |---|---|
 | Agent engine | [Hermes Agent](https://github.com/NousResearch/hermes-agent) (Nous Research): profiles, skills, memory |
 | AI brain | switchable from the interface: local models served by Ollama (`gemma4-hermes` on an RTX 4080) or Claude (Opus 5.5, Fable 5.1, Sonnet 5, Haiku 4.5) through a subscription |
+| Kernel | single scheduler, caller identity, capability tokens, chained signed journal, tool-level kill switch |
 | Orchestration core | Node.js / TypeScript, **zero runtime dependency** |
 | Interface | React, TypeScript, Tailwind, Vite |
 | Voice | Whisper (speech-to-text) and Kokoro (text-to-speech), 100 % local |
+| External tools | MCP servers (including CV Creator, the “hermes-os” gateway), with one contract test per tool |
+| SOC | telemetry (including Sysmon, home-grown config), catalogue broker, per-action UAC elevation |
 | Coding executors | Claude Code, Cursor |
-| Scripts | PowerShell 7: one-command, repeatable install |
+| Scripts | PowerShell 7: one-command, repeatable install (Pester tests) |
 
 ➡️ The engineering choices I am most proud of: [**Key decisions**](docs/en/decisions.md)
 

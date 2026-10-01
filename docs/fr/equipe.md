@@ -2,7 +2,7 @@
 
 # L'équipe
 
-20 agents, organisés comme une entreprise. Chaque agent a une carte d'identité (son « âme ») qui fixe sa mission, ses règles et s'il a le droit d'écrire.
+30 agents, organisés comme une entreprise. Chaque agent a une carte d'identité (son « âme ») qui fixe sa mission, ses règles et s'il a le droit d'écrire.
 
 **La règle d'or :** les managers lisent, décident et délèguent. Seuls certains exécutants (marqués ✍️) ont le droit d'écrire, et uniquement dans les limites d'une tâche approuvée.
 
@@ -13,10 +13,15 @@ flowchart TD
     H --> RH["<b>Nora</b> · RH & emploi"]
     H --> SEC["<b>Alix</b> · Sécurité défensive"]
     H --> RED["<b>Strike</b> · Red Cell"]
+    H --> TIK["<b>TIK</b> · Commerce digital"]
+    H --> SG["<b>Margot</b> · Secrétariat"]
+    H -.-> IR["<b>Iris</b> · Navigatrice web"]
     DEV --> A1["Architecte"] & A2["Linus ✍️"] & A3["Grace"] & A4["Testeur ✍️"] & A5["Auditeur ISO"]
     RH --> B1["Camille ✍️"] & B2["Sacha"] & B3["Léo"] & B4["Inès"]
     SEC --> C1["Mira ✍️"] & C2["Elias"] & C3["Owen"]
     RED --> D1["Spectre"] & D2["Breach"] & D3["Aegis"]
+    TIK --> E1["Noé ✍️"] & E2["Jules ✍️"] & E3["Lina"] & E4["Maya"] & E5["Hugo"] & E6["Clara"]
+    SG --> F1["Hélène"]
 ```
 
 ---
@@ -83,6 +88,39 @@ Mon **seul interlocuteur**. Il écoute (voix ou clavier), décide de ce qu'il fa
 - toute tâche de ce pôle est **forcée au niveau de risque maximal**, quelle que soit la demande ;
 - elle **attend donc toujours mon approbation manuelle** ; le mode « Auto » ne peut jamais l'approuver ;
 - une action réelle est toujours un geste que j'accomplis moi-même, sur une cible que j'ai l'autorisation de tester.
+
+---
+
+## 🛒 Commerce digital : TIK
+
+Un **pôle produit complet** pour construire et faire vivre un vrai site.
+
+| Agent | Rôle |
+|---|---|
+| **TIK** (manager) | pilote le pôle, cadre les missions et les budgets |
+| **Noé** ✍️ | designer du site |
+| **Jules** ✍️ | rédacteur web |
+| **Lina** | analyste SEO |
+| **Maya** | chargée d'études de marché |
+| **Hugo** | analyste d'infrastructure du site |
+| **Clara** | juriste : socle légal, conformité |
+
+*Frontière stricte « web ⊕ privilège » : un agent a le web **ou** un privilège serveur, jamais les deux dans le même geste. Chaque fait est sourcé ; un plafond de publication borne ce qui peut partir en ligne.*
+
+---
+
+## 🗂️ Secrétariat : Margot
+
+| Agent | Rôle |
+|---|---|
+| **Margot** (manager) | tâches administratives récurrentes (factures, pièces) ; n'expose que des agrégats |
+| **Hélène** | archiviste : lecture locale des pièces, uniquement |
+
+---
+
+## 🧭 Iris, la navigatrice web
+
+Le **seul** agent autorisé à piloter un navigateur, toujours **à la vue de l'opérateur** et derrière un garde-fou déterministe. Isoler la navigation dans un seul agent surveillé évite qu'une page piégée ne détourne le reste de l'équipe.
 
 ---
 

@@ -2,7 +2,7 @@
 
 # Key decisions
 
-The project holds 55 written decision records (ADRs). Here are ten that best show how I think: each one starts from a real problem, often one I found by testing or auditing my own work.
+The project holds 98 written decision records (ADRs). Here are fourteen that best show how I think: each one starts from a real problem, often one I found by testing or auditing my own work.
 
 ---
 
@@ -56,6 +56,26 @@ The project holds 55 written decision records (ADRs). Here are ten that best sho
 **Problem:** using AI for mechanical tasks is slow, costly and unpredictable; a tool update can silently break an integration.
 **Decision:** everything mechanical is a plain script. Every external tool the system relies on has a *contract test* that fails loudly if its behaviour changes.
 **Why it matters:** a reliable system uses AI where it adds value, and only there.
+
+### 11. Move security from the screen into the kernel
+**Problem:** a runtime audit (doc 07) showed too many safeguards lived in the interface. Anything that started “beside” the orchestrator escaped the rules.
+**Decision:** a named kernel that **everything** goes through, a single scheduler with state shared across processes, and a **caller identity** on every turn — the director himself talks to the kernel in his own name.
+**Why it matters:** a security rule is only worth it if the system enforces it. At the kernel level it stops being a courtesy and becomes a guarantee.
+
+### 12. A capability token re-checked on every tool call
+**Problem:** checking rights at the start of a turn leaves the door open to an agent that widens its power mid-way.
+**Decision:** the kernel grants a precise capability token (which tools, what scope) **re-verified on every tool call**, with an emergency stop that reaches down to a single tool, and child processes that inherit no secret names.
+**Why it matters:** least privilege, verified continuously rather than once.
+
+### 13. Memory is learned, but under my approval
+**Problem:** letting agents decide on their own what to keep is letting them rewrite their own rules.
+**Decision:** proposed memory notes go through a “pending” queue: I approve or reject, and it is the engine itself that applies my decision. Only what the operator asks to remember about himself is written directly.
+**Why it matters:** the team can learn without ever drifting outside what I approved.
+
+### 14. Let the agents talk to each other — within a frame
+**Problem:** a strict delegation tree never lets coordination emerge between agents; but letting them chat freely is a risk.
+**Decision:** a “Lounge” where agents talk on the **local** brain, bounded by a policy: tickets, mentions, a weekly retrospective, unattended operation, and opening a piece of work in Coworking **only when I decide so**.
+**Why it matters:** you get the benefit of a team that coordinates, without giving up control or traceability.
 
 ---
 

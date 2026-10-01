@@ -2,7 +2,7 @@
 
 # Décisions clés
 
-Le projet compte 55 décisions d'architecture écrites (ADR). En voici dix qui montrent le mieux ma façon de raisonner : chacune part d'un problème réel, souvent découvert en testant ou en auditant mon propre travail.
+Le projet compte 98 décisions d'architecture écrites (ADR). En voici quatorze qui montrent le mieux ma façon de raisonner : chacune part d'un problème réel, souvent découvert en testant ou en auditant mon propre travail.
 
 ---
 
@@ -56,6 +56,26 @@ Le projet compte 55 décisions d'architecture écrites (ADR). En voici dix qui m
 **Problème :** utiliser l'IA pour des tâches mécaniques est lent, coûteux et imprévisible ; une mise à jour d'outil peut casser une intégration sans bruit.
 **Décision :** tout ce qui est mécanique est un simple script. Chaque outil externe dont dépend le système a un *test de contrat* qui échoue bruyamment si son comportement change.
 **Pourquoi c'est important :** un système fiable utilise l'IA là où elle apporte de la valeur, et seulement là.
+
+### 11. Déplacer la sécurité de l'écran vers le noyau
+**Problème :** un audit de l'exécution (doc 07) a montré que trop de garde-fous vivaient dans l'interface. Ce qui démarrait « à côté » de l'orchestrateur échappait aux règles.
+**Décision :** un noyau nommé par lequel **tout** passe, un ordonnanceur unique à l'état partagé entre processus, et une **identité d'appelant** sur chaque tour — le directeur lui-même parle au noyau en son nom.
+**Pourquoi c'est important :** une règle de sécurité ne vaut que si le système l'impose. Au niveau du noyau, elle cesse d'être une politesse pour devenir une garantie.
+
+### 12. Un jeton de capacité revérifié à chaque appel d'outil
+**Problème :** vérifier les droits au début d'un tour laisse la porte ouverte à un agent qui élargit son pouvoir en cours de route.
+**Décision :** le noyau accorde un jeton de capacité précis (quels outils, quel périmètre) **recontrôlé à chaque appel d'outil**, avec un arrêt d'urgence qui descend jusqu'au niveau d'un outil, et des processus enfants qui n'héritent d'aucun nom de secret.
+**Pourquoi c'est important :** le principe du moindre privilège, vérifié en continu plutôt qu'une seule fois.
+
+### 13. La mémoire s'apprend, mais sous ma validation
+**Problème :** laisser des agents décider seuls de ce qu'ils retiennent, c'est les laisser réécrire leurs propres règles.
+**Décision :** les notes de mémoire proposées passent par une file « en attente » : je valide ou je refuse, et c'est le moteur lui-même qui applique ma décision. Seul ce que l'opérateur demande de retenir sur lui s'écrit directement.
+**Pourquoi c'est important :** l'équipe peut apprendre sans jamais dériver hors de ce que j'ai approuvé.
+
+### 14. Faire parler les agents entre eux — dans un cadre
+**Problème :** un arbre de délégation strict ne laisse jamais émerger de coordination entre agents ; mais les laisser discuter librement est un risque.
+**Décision :** un « Salon » où les agents échangent sur le cerveau **local**, bornés par une politique : tickets, mentions, rétrospective hebdomadaire, marche sans surveillance, et ouverture d'un chantier en Coworking **uniquement sur ma décision**.
+**Pourquoi c'est important :** on obtient le bénéfice d'une équipe qui se coordonne, sans renoncer au contrôle ni à la traçabilité.
 
 ---
 

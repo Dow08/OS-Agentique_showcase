@@ -38,7 +38,7 @@ flowchart TB
         direction LR
         U["Jarvis interface<br/>voice + screen"]
         CORE["Core: policy → execution → verification"]
-        TEAM["Team of 20 agents<br/>+ rules + memory"]
+        TEAM["Team of 30 agents<br/>+ rules + memory"]
     end
     subgraph L2["Hermes Agent: open-source engine"]
         E["profiles · skills · sessions"]
@@ -93,9 +93,9 @@ I come from cybersecurity, so the system is designed like a defended network: se
 
 ## 6. How I work: decisions written down, proof required
 
-- **55 decision records (ADRs).** Each one states the context, the decision, the rejected alternatives and the *evidence*. When something is decided, it is written, so the next session (human or AI) does not undo it.
+- **98 decision records (ADRs).** Each one states the context, the decision, the rejected alternatives and the *evidence*. When something is decided, it is written, so the next session (human or AI) does not undo it.
 - **A gate before every feature**: *What? Why? Interface? Security? Test? Rollback?*, answered **before** writing code.
-- **607 automated tests**, plus *contract tests* that check every external tool still behaves as expected after an update.
+- **1,296 unit tests passing (0 failures)**, plus *contract tests* that check every external tool still behaves as expected after an update.
 - **Deterministic first.** Whatever is mechanical is done by a plain script, not by an AI. AI is kept for what really needs judgement.
 - **Reproducible.** One PowerShell command rebuilds the whole environment on a fresh PC.
 
