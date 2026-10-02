@@ -86,6 +86,10 @@ flowchart TD
     SEC2 --> SEC21["Hélène (archivist)"]
 ```
 
+![Team map: 30 agents, from the CEO to the development, HR, security, Red Team, commerce and secretariat departments](assets/team-map-30.png)
+
+> The live map, as Hermes reads it before every decision: **30 agents**, their department, their role, and the “writes” badge for the few workers allowed to change files.
+
 | Department | What it does for me |
 |---|---|
 | **Development** — Ada | designs, writes, reviews and tests code; can hand coding jobs to Claude Code or Cursor, always under approval |
@@ -204,6 +208,10 @@ The defensive-security department does more than give advice: it is backed by a 
 ## The agents' lounge: a team that talks to itself
 
 A team isn't just a delegation tree. OS-Agentique has a **Lounge**: a visible thread where agents talk to each other, on the **local** brain and within a policy-bounded frame.
+
+![The agents' Lounge: a retrospective between the Architect, Linus and Grace; on the right, the proposed piece of work and the memory notes awaiting approval](assets/salon.png)
+
+> Real capture, on an isolated demo (local brain gemma4-hermes). In the centre, the agents reply to each other; on the right, a **proposed piece of work** (which I open, or not, as a Coworking space) and the **lessons to keep**: each note waits for my “Keep” or “Don't keep”.
 
 - An agent can **open a ticket**, mention another, and the thread follows the piece of work it spawned.
 - Agents **propose memory notes**; nothing is kept without my approval (see below).

@@ -86,6 +86,10 @@ flowchart TD
     SEC2 --> SEC21["Hélène (archiviste)"]
 ```
 
+![Carte de l'équipe : 30 agents, du CEO aux pôles développement, RH, sécurité, Red Team, commerce et secrétariat](assets/team-map-30.png)
+
+> La carte vivante, telle que Hermes la lit avant chaque décision : **30 agents**, leur pôle, leur rôle et le badge « écrit » pour les rares exécutants autorisés à modifier des fichiers.
+
 | Pôle | Ce qu'il fait pour moi |
 |---|---|
 | **Développement** — Ada | conçoit, écrit, relit et teste du code ; peut confier des travaux à Claude Code ou Cursor, toujours sous approbation |
@@ -202,6 +206,10 @@ Le pôle sécurité défensive ne fait pas que donner des conseils : il s'appuie
 ## Le Salon d'agents : l'équipe qui se parle
 
 Une équipe n'est pas qu'un arbre de délégation. OS-Agentique a un **Salon** : un fil visible où les agents échangent entre eux, sur le cerveau **local** et dans un cadre borné par une politique.
+
+![Le Salon d'agents : une rétrospective entre l'Architecte, Linus et Grace ; à droite, le chantier proposé et les notes de mémoire à valider](assets/salon.png)
+
+> Capture réelle, sur une démo isolée (cerveau local gemma4-hermes). Au centre, les agents se répondent ; à droite, un **chantier proposé** (que j'ouvre, ou non, en espace Coworking) et les **leçons à retenir** : chaque note attend mon « Retenir » ou « Ne pas retenir ».
 
 - Un agent peut **ouvrir un ticket**, en mentionner un autre, et le fil suit le chantier qu'il a fait naître.
 - Les agents **proposent des notes de mémoire** ; rien n'est retenu sans ma validation (voir ci-dessous).
