@@ -39,7 +39,7 @@ Le projet compte 98 décisions d'architecture écrites (ADR). En voici quatorze 
 ### 7. Un cerveau local, choisi par la mesure
 **Problème :** les modèles cloud coûtent de l'argent et font sortir des données ; mon portable n'a pas de carte graphique.
 **Décision :** un cerveau par machine. Sur le PC fixe, un modèle local choisi après en avoir comparé plusieurs sur des tâches d'agent (9/10, environ 5 s par échange simple). Sur le portable, un modèle cloud gratuit. Claude n'intervient qu'en repli explicite pour le travail exigeant sur le CV.
-**Depuis :** le cerveau se choisit depuis l'interface, en local ou avec Claude (Opus 5.5, Sonnet 5, Haiku 4.5), pour toute l'équipe en un clic, et certains agents gardent un cerveau fixe (la Red Cell toujours en local).
+**Depuis :** le cerveau se choisit depuis l'interface, en local ou avec Claude (Opus 5.5, Sonnet 5, Haiku 4.5), pour toute l'équipe en un clic, et certains agents gardent un cerveau fixe (la Red Team toujours en local).
 **Pourquoi c'est important :** coût, confidentialité et performance ont été arbitrés avec des données, pas des suppositions, et le choix final reste le mien, tâche par tâche.
 
 ### 8. Rendre le travail visible
@@ -49,7 +49,7 @@ Le projet compte 98 décisions d'architecture écrites (ADR). En voici quatorze 
 
 ### 9. Les capacités sensibles sont toujours sous contrôle manuel
 **Problème :** un mode « Auto » qui approuve seul les tâches à risque moyen est pratique, mais ne doit jamais couvrir des actions de sécurité offensive.
-**Décision :** toute tâche de la Red Cell est forcée au niveau de risque maximal, quel que soit le point d'entrée. Elle attend toujours mon clic, et un conseiller éthique relit chaque plan.
+**Décision :** toute tâche de la Red Team est forcée au niveau de risque maximal, quel que soit le point d'entrée. Elle attend toujours mon clic, et un conseiller éthique relit chaque plan.
 **Pourquoi c'est important :** le confort ne passe jamais avant la sécurité. La règle est appliquée côté serveur, pas seulement dans l'interface.
 
 ### 10. Des scripts avant l'IA, et un contrat sur chaque dépendance

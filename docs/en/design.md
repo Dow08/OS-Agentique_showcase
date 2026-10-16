@@ -38,7 +38,7 @@ flowchart TB
         direction LR
         U["Jarvis interface<br/>voice + screen"]
         CORE["Core: policy → execution → verification"]
-        TEAM["Team of 30 agents<br/>+ rules + memory"]
+        TEAM["Team of 37 agents<br/>+ rules + memory"]
     end
     subgraph L2["Hermes Agent: open-source engine"]
         E["profiles · skills · sessions"]

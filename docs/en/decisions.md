@@ -39,7 +39,7 @@ The project holds 98 written decision records (ADRs). Here are fourteen that bes
 ### 7. A local brain, chosen by measurement
 **Problem:** cloud models cost money and send data out; my laptop has no GPU.
 **Decision:** one brain per machine. On my desktop, a local model chosen after benchmarking several on agent tasks (9/10, about 5 s per simple exchange). On the laptop, a free cloud model. Claude is used only as an explicit fallback for demanding CV work.
-**Since then:** the brain became switchable from the interface, local or Claude (Opus 5.5, Sonnet 5, Haiku 4.5), for the whole team in one click, with some agents pinned to a fixed brain (the Red Cell always local).
+**Since then:** the brain became switchable from the interface, local or Claude (Opus 5.5, Sonnet 5, Haiku 4.5), for the whole team in one click, with some agents pinned to a fixed brain (the Red Team always local).
 **Why it matters:** cost, privacy and performance were weighed with data, not guesses, and the final choice stays mine, task by task.
 
 ### 8. Make the work visible
@@ -49,7 +49,7 @@ The project holds 98 written decision records (ADRs). Here are fourteen that bes
 
 ### 9. Sensitive capabilities are always under manual control
 **Problem:** an “Auto” mode that approves medium-risk tasks by itself is convenient, but must never cover offensive security actions.
-**Decision:** every task in the Red Cell is forced to the highest risk level, whatever the entry point. It always waits for my click, and an ethics advisor reviews every plan.
+**Decision:** every task in the Red Team is forced to the highest risk level, whatever the entry point. It always waits for my click, and an ethics advisor reviews every plan.
 **Why it matters:** convenience never outranks safety. The rule is enforced on the server side, not just in the interface.
 
 ### 10. Scripts before AI, and contracts on every dependency
