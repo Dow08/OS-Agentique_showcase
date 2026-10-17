@@ -93,9 +93,9 @@ Je viens de la cybersécurité : le système est donc conçu comme un réseau d�
 
 ## 6. Ma façon de travailler : décisions écrites, preuves exigées
 
-- **98 décisions d'architecture (ADR).** Chacune précise le contexte, la décision, les alternatives écartées et la *preuve*. Ce qui est décidé est écrit, pour que la session suivante (humaine ou IA) ne le défasse pas.
+- **114 décisions d'architecture (ADR)** (au 17 octobre 2026). Chacune précise le contexte, la décision, les alternatives écartées et la *preuve*. Ce qui est décidé est écrit, pour que la session suivante (humaine ou IA) ne le défasse pas.
 - **Un sas avant chaque fonctionnalité** : *Quoi ? Pourquoi ? Interface ? Sécurité ? Test ? Retour arrière ?*, avec une réponse **avant** d'écrire le code.
-- **1 296 tests unitaires au vert (0 échec)**, plus des *tests de contrat* qui vérifient que chaque outil externe se comporte toujours comme prévu après une mise à jour.
+- **1 624 tests unitaires** (comptés le 17 octobre 2026), plus des *tests de contrat* qui vérifient que chaque outil externe se comporte toujours comme prévu après une mise à jour.
 - **Le déterministe d'abord.** Ce qui est mécanique est fait par un simple script, pas par une IA. L'IA est réservée à ce qui demande vraiment du jugement.
 - **Reproductible.** Une commande PowerShell reconstruit tout l'environnement sur un PC neuf.
 

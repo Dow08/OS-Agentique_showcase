@@ -26,9 +26,9 @@ OS-Agentique transforme un poste Windows 11 en une petite entreprise d'agents IA
 | **Le cerveau de son choix** | changement en un clic : un modèle local de 25 milliards de paramètres sur ma carte graphique (RTX 4080, **0 €** par requête) ou Claude quand une tâche demande plus de puissance |
 | **Une interface « orbitale »** | voix locale (« Hermès, … »), un **anneau** avec un satellite par pôle, **8 cockpits** plein écran, l'équipe en direct, les décisions qui m'attendent |
 | **L'humain décide** | toute action à risque moyen ou élevé attend mon approbation ; une action à risque élevé vérifie ma présence par **Windows Hello** |
-| **1 624 tests unitaires**, **112 tests de bout en bout** (Playwright), **25 tests de contrat** | comptés le jour de cette mise à jour ; les tests d'interface tournent sur une instance isolée, avec des **données fictives** |
-| **112 décisions de conception écrites** (ADR) | chacune consigne le contexte, le choix, les alternatives écartées et la preuve |
-| **≈ 95 000 lignes de TypeScript, 301 commits en 32 jours** | du 15 septembre au 16 octobre 2026 |
+| **1 624 tests unitaires**, **127 tests de bout en bout** (Playwright), **26 tests de contrat** | comptés le 17 octobre 2026 ; les tests d'interface tournent sur une instance isolée, avec des **données fictives** |
+| **114 décisions de conception écrites** (ADR) | chacune consigne le contexte, le choix, les alternatives écartées et la preuve |
+| **≈ 95 000 lignes de TypeScript, 328 commits en 33 jours** | du 15 septembre au 17 octobre 2026 |
 | **Construction toujours en cours** | développement actif : de nouvelles capacités sont ajoutées régulièrement |
 
 ---
@@ -122,7 +122,7 @@ flowchart TB
 | **Semaine 1** | Cœur d'orchestration : tâche en machine à états, politique de risque, vérification, exécuteurs bornés, planificateur, Coworking, moteur de frictions. Jarvis vocal. | ADR-006 → 029 |
 | **Semaine 2** | Pôle RH : circuit CV relu, recherche d'emploi automatisée, données personnelles cloisonnées. Pôle sécurité défensive. Profilage, suivi en direct, alertes de dérive, sélecteur de cerveau, Coworking façon atelier partagé. | ADR-030 → 060 |
 | **Semaine 3** | SOC local (Sysmon, broker à catalogue, Windows Hello). Le **noyau** : identité, jetons de capacité, arrêt au niveau de l'outil, processus enfants bornés, journal signé, ordonnanceur unique. Salon d'agents, mémoire sous validation, pôle Commerce digital. | ADR-061 → 097 |
-| **Semaine 4** | Administration serveur par recettes, veille de marché autonome, **gate frontend** (Playwright + lint de design), **transactions d'écriture**, pôles Commercial, Audit externe, post-mortems, mentor carrière, Secrétariat en conditions réelles, puis la **refonte orbitale de Jarvis** et ses 8 cockpits. | ADR-098 → 114 |
+| **Semaine 4** | Administration serveur par recettes, veille de marché autonome, **gate frontend** (Playwright + lint de design), **transactions d'écriture**, pôles Commercial, Audit externe, post-mortems, mentor carrière, Secrétariat en conditions réelles, la **refonte orbitale de Jarvis** et ses 8 cockpits, puis les mises à jour de la chaîne d'approvisionnement et les pièces jointes au chat. | ADR-098 → 116 |
 
 ---
 
@@ -167,6 +167,10 @@ flowchart TD
 | **Navigatrice web** — Iris | le **seul** agent qui pilote un navigateur, à la vue de l'opérateur, derrière un garde-fou déterministe |
 | **Coworking** *(mode)* | un atelier partagé où l'équipe et moi travaillons ensemble sur un projet, avec un fil d'activité lisible et un journal infalsifiable |
 
+![Coworking : un chantier partagé, le plan en deux étapes, Linus à l'œuvre, l'équipe et mes contraintes à droite](assets/coworking.png)
+
+> Le mode Coworking (instance de test, données fictives) : je fixe l'objectif, Hermes planifie, l'équipe exécute étape par étape, et je peux ajouter une contrainte à tout moment.
+
 ➡️ Qui est chaque agent et ce qu'il fait : [**L'équipe**](docs/fr/equipe.md)
 
 ---
@@ -181,13 +185,19 @@ L'interface a été entièrement repensée mi-octobre. L'accueil est un **anneau
 
 | Cockpit Tâches | Cockpit GRC |
 |---|---|
-| ![Cockpit Tâches : à décider, en cours, échecs, planifiées ; le détail explique pourquoi une tâche attend](assets/cockpit-taches.png) | ![Cockpit GRC : matrice des contrôles ISO / CIS / ANSSI, écarts ouverts, conformité par famille](assets/cockpit-grc.png) |
+| ![Cockpit Tâches : à décider, en cours, échecs, planifiées ; le détail explique pourquoi une tâche attend](assets/cockpit-taches.png) | ![Cockpit GRC : matrice des contrôles par référentiel, écarts ouverts, conformité par famille](assets/cockpit-grc.png) |
 | tout ce que les agents exécutent, tous pôles confondus ; une tâche risquée explique **pourquoi** elle attend mon clic, et son diff a été préparé dans un worktree isolé | la posture de conformité : matrice des contrôles, écarts classés, avis d'Elias, audits passifs, preuves et sceau |
 
 | Cockpit Emploi | L'équipe en direct |
 |---|---|
 | ![Cockpit Emploi : offres notées par Inès, diagnostic, CV et lettre préparés sur demande](assets/cockpit-emploi.png) | ![Tiroir Équipe : qui travaille, sur quoi, depuis quand ; les agents proposés par l'usine à agents](assets/equipe-direct.png) |
 | les offres notées par Inès (grille explicable), le diagnostic, et le bouton « préparer CV et lettre » ; le clic « postuler » reste le mien | qui travaille, sur quoi, depuis quand ; la fiche de chaque agent ; les agents **proposés** par l'usine à agents, avant d'exister |
+
+**Systèmes** regroupe ce qui fait tourner l'ensemble : les services, le choix du cerveau, un diagnostic, et depuis mi-octobre les **mises à jour de la chaîne d'approvisionnement** (moteur d'agents, modèle local, Node.js, dépendances, outils en ligne de commande) : chaque version est lue, une mise à jour est une tâche à approuver, jamais une commande libre.
+
+<p align="center"><img src="assets/systemes-mises-a-jour.png" alt="Systèmes › Mises à jour : versions de chaque composant, mise à jour disponible, geste manuel ou tâche à approuver" width="760"></p>
+
+La conversation accepte aussi des **pièces jointes** (images, texte, PDF) envoyées au directeur dans un tour, bornées en taille et en type.
 
 Les règles de cette interface sont elles-mêmes gardées par le code : un **système de design** écrit (tokens, composants, accessibilité), un **lint de design** qui refuse une couleur en dur ou un bouton sans effet, et une **gate** (typage, lint, build, budget des bundles, Playwright sur trois largeurs) qui doit être verte avant toute fusion.
 
@@ -201,6 +211,8 @@ Diriger une équipe, c'est savoir qui travaille, sur quoi, combien de temps et p
 
 ![Synthèse du profilage : demandes, temps, jetons, coût, approbations, alertes](assets/profiling-summary.png)
 
+> Captures de fin septembre sur l'instance réelle (zones structurées seulement). Le profilage vit dans le panneau latéral, inchangé par la refonte.
+
 <p align="center"><img src="assets/profiling-timeline.png" alt="Frise d'activité par agent sur 24 heures" width="720"></p>
 
 **Par agent :** demandes, échecs, temps de travail, temps de réflexion du modèle, appels d'outils, jetons, coût et outils favoris. **Par outil :** chaque outil et serveur MCP utilisé, combien de fois, en combien de temps, et par quels agents.
@@ -209,9 +221,11 @@ Diriger une équipe, c'est savoir qui travaille, sur quoi, combien de temps et p
 |---|---|
 | ![Tableau d'activité par agent](assets/profiling-agents.png) | ![Outils et serveurs MCP : appels, latence, agents](assets/profiling-tools.png) |
 
-**Et en direct :** le suivi montre ce qui se passe *maintenant*, même quand plusieurs tâches tournent en parallèle, avec chaque étape (outil, durée, agent délégué) et des **alertes de dérive** déterministes : une écriture pendant une tâche en lecture seule, une délégation vers un pôle sensible, une boucle, des échecs répétés.
+**Et en direct :** un témoin d'agents dans la barre (bleu : travaille, ambre : attend ma décision, rouge : échec, menthe : terminé) et, dans le cockpit Tâches, chaque tâche avec son agent, son mode, son exécuteur et la raison de son attente. Des **alertes de dérive** déterministes surveillent chaque tâche : une écriture pendant une tâche en lecture seule, une délégation vers un pôle sensible, une boucle, des échecs répétés.
 
-![Trois agents au travail en parallèle, suivis en direct](assets/live-tracking.png)
+![Cockpit Tâches en direct : quatre agents au travail, une tâche à risque élevé qui attend Windows Hello, un échec expliqué](assets/taches-en-direct.png)
+
+> Capture de l'instance de test, données fictives : Hélène attend mon approbation sous Windows Hello, Linus travaille dans un worktree isolé, Léo a une passe en échec dont la cause est affichée.
 
 > **Pourquoi c'est important :** l'observabilité transforme une boîte noire en une équipe qu'on peut diriger.
 
@@ -221,11 +235,11 @@ Diriger une équipe, c'est savoir qui travaille, sur quoi, combien de temps et p
 
 Hermes reste le même ; seul le cerveau derrière lui change. Depuis l'onglet **Systèmes**, je fais passer toute l'équipe d'un modèle local, sur ma carte graphique, à Claude, et inversement, en une quinzaine de secondes.
 
-<p align="center"><img src="assets/brain-selector.png" alt="Sélecteur de cerveau : modèle local ou Claude, avec sous-modèle" width="380"></p>
+<p align="center"><img src="assets/systemes-cerveaux.png" alt="Systèmes › Cerveaux : moteur actuel local, bascule vers Claude par abonnement, fournisseurs et modèles disponibles" width="760"></p>
 
 - **En local** quand je veux la confidentialité et le coût zéro ; **Claude** pour un travail exigeant.
-- **Certains agents gardent un cerveau fixe** : le directeur et une partie du pôle développement tournent sur Claude ; la **Red Team** et le **Salon** restent toujours en local ; les agents RH refusent tout fournisseur autre que le modèle local ou Claude.
-- **Liste fermée :** seuls des modèles testés peuvent être choisis, aucune saisie libre.
+- **Certains agents gardent un cerveau fixe** : le directeur et une partie du pôle développement tournent sur Claude ; la **Red Team** et les échanges autonomes du **Salon** restent toujours en local ; les agents RH refusent tout fournisseur autre que le modèle local ou Claude.
+- **Liste fermée :** seuls des modèles testés peuvent être choisis (Claude Fable 5.1, Opus 5.5, Sonnet 5, Haiku 4.5, et le modèle local), aucune saisie libre.
 
 ---
 
@@ -249,11 +263,15 @@ Au début, l'interface était la sécurité. Désormais, la sécurité est **dan
 
 Le pôle sécurité défensive ne fait pas que donner des conseils : il s'appuie sur un **centre de supervision (SOC) qui tourne sur le poste**, adossé au noyau, et sur un cockpit de **gouvernance, risque et conformité**.
 
+![Cockpit SOC : pouls des événements, posture, fil d'alertes unifié (événements, egress, réseau, contrôles), mode sûr et arrêt d'urgence](assets/cockpit-soc.png)
+
+> Instance de test, données fictives : le fil unifié mélange une écriture refusée hors du dossier de travail, un flux réseau inattendu attribué à un agent, une sortie « CONFIDENTIAL » et un contrôle non conforme.
+
 - **Télémétrie réelle** (dont Sysmon avec une configuration maison), normalisée, où chaque sortie réseau est rattachée à l'agent qui l'a provoquée.
 - **Registre des sorties des agents** : ce que chaque agent tente vers l'extérieur, classé ; un hook temps réel coupe le réseau aux profils sensibles.
 - **Broker à catalogue** : les actions privilégiées passent par une liste fermée, avec une **élévation UAC par action**.
 - **Audit chaîné, sceau, arrêt d'urgence et mode sûr** pour garder le contrôle même en cas d'incident ; des **post-mortems** générés par le code et validés par moi.
-- **GRC** : matrice de contrôles (ISO 27001, CIS, ANSSI, NIST CSF), registre des risques, avis de conformité d'Elias, audits externes passifs, et un lanceur vers des outils GRC externes.
+- **GRC** : matrice de contrôles référencés sur CIS, ISO/IEC 27001:2022 (annexe A) et NIST CSF 2.0, registre des risques, avis de conformité d'Elias, audits externes passifs, et un lanceur vers des outils GRC open source (Green Shield GRC, CISO Assistant).
 
 > Présenté ici dans les grandes lignes : ce dépôt montre l'intention et les garde-fous, pas les détails opérationnels.
 
@@ -264,6 +282,8 @@ Le pôle sécurité défensive ne fait pas que donner des conseils : il s'appuie
 Une équipe n'est pas qu'un arbre de délégation. OS-Agentique a un **Salon** : un fil visible où les agents échangent entre eux, sur le cerveau **local**, dans un cadre borné par une politique.
 
 ![Le Salon d'agents : une rétrospective entre l'Architecte, Linus et Grace ; à droite, le chantier proposé et les notes de mémoire à valider](assets/salon.png)
+
+> Rétrospective réelle, capturée début octobre sur une démo isolée (cerveau local) ; la barre du haut est celle de l'interface précédente, le salon lui-même est inchangé.
 
 - Un agent peut **ouvrir un ticket**, en mentionner un autre, joindre une pièce (un diff, une erreur) ; le fil suit le chantier qu'il a fait naître.
 - Les agents **proposent des notes de mémoire** et des **chantiers** ; rien n'est retenu ni ouvert sans ma validation.
@@ -298,7 +318,7 @@ Tout le code de ce projet a été écrit par des agents IA (Claude Code, et ponc
 | Règle | Ce que ça change |
 |---|---|
 | **Une porte avant le code** | chaque fonctionnalité répond d'abord à WHAT · WHY · INTERFACE · SECURITY · TEST · ROLLBACK ; pas de code sans ça |
-| **Chaque décision écrite** | 112 ADR : contexte, choix, alternatives écartées, preuve. Quand une décision est amendée, l'ADR le dit |
+| **Chaque décision écrite** | 114 ADR : contexte, choix, alternatives écartées, preuve. Quand une décision est amendée, l'ADR le dit |
 | **Les plans d'abord** | les gros chantiers (noyau, SOC, pôles, refonte d'interface) commencent par un document de conception relu, puis des **lots** livrés verts un par un |
 | **Constructeur ≠ vérificateur** | un agent construit dans son worktree, un autre relit, mesure à l'écran et lance la gate ; deux sessions n'écrivent jamais les mêmes fichiers |
 | **La preuve, pas la promesse** | tests isolés (jamais sur les vrais dossiers), tests de contrat pour chaque outil externe, Playwright sur données fictives, lint de design ; « le LLM dit que c'est fait » n'est jamais une preuve |

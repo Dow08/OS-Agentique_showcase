@@ -2,7 +2,7 @@
 
 # Key decisions
 
-The project holds 98 written decision records (ADRs). Here are fourteen that best show how I think: each one starts from a real problem, often one I found by testing or auditing my own work.
+The project holds 114 written decision records (ADRs). Here are fourteen that best show how I think: each one starts from a real problem, often one I found by testing or auditing my own work.
 
 ---
 

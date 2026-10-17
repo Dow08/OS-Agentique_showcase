@@ -2,6 +2,8 @@
 
 # A day with Hermes
 
+> The screenshots on this page date from late September 2026, on the previous interface (“thread” home, side panel). Since the mid-October redesign, the home is a ring of departments with one cockpit each: see the [README](../../README.md#jarvis-a-ring-and-eight-cockpits). The steps themselves are unchanged: same single door, same approvals, same verification.
+
 A step-by-step walkthrough of the real system. Every screenshot comes from the actual interface with real answers from the local AI model. Nothing is mocked up. Demo data is fictional wherever personal information would otherwise appear.
 
 ---

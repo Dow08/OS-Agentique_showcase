@@ -2,6 +2,8 @@
 
 # Une journée avec Hermes
 
+> Les captures de cette page datent de fin septembre 2026, sur l'interface précédente (accueil « fil », panneau latéral). Depuis la refonte de mi-octobre, l'accueil est un anneau de pôles avec un cockpit par pôle : voir le [README](../../README.fr.md#jarvis--un-anneau-huit-cockpits). Les étapes, elles, sont inchangées : même porte unique, mêmes approbations, même vérification.
+
 Le système réel, étape par étape. Chaque capture vient de l'interface réelle, avec de vraies réponses du modèle IA local. Rien n'est une maquette. Les données de démonstration sont fictives partout où des informations personnelles apparaîtraient.
 
 ---

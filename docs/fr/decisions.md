@@ -2,7 +2,7 @@
 
 # Décisions clés
 
-Le projet compte 98 décisions d'architecture écrites (ADR). En voici quatorze qui montrent le mieux ma façon de raisonner : chacune part d'un problème réel, souvent découvert en testant ou en auditant mon propre travail.
+Le projet compte 114 décisions d'architecture écrites (ADR). En voici quatorze qui montrent le mieux ma façon de raisonner : chacune part d'un problème réel, souvent découvert en testant ou en auditant mon propre travail.
 
 ---
 

@@ -26,9 +26,9 @@ OS-Agentique turns a Windows 11 workstation into a small, well-run company of AI
 | **The brain of my choice** | one click: a 25-billion-parameter model on my own graphics card (RTX 4080, **$0** per request) or Claude when a task needs more power |
 | **An “orbital” interface** | local voice (“Hermes, …”), a **ring** with one satellite per department, **8 full-screen cockpits**, the live team, the decisions waiting for me |
 | **The human decides** | every medium or high-risk action waits for my approval; a high-risk action checks my presence with **Windows Hello** |
-| **1,624 unit tests**, **112 end-to-end tests** (Playwright), **25 contract tests** | counted on the day of this update; UI tests run on an isolated instance with **fictional data** |
-| **112 written design decisions** (ADRs) | each records the context, the choice, the rejected alternatives and the evidence |
-| **≈ 95,000 lines of TypeScript, 301 commits in 32 days** | from 15 September to 16 October 2026 |
+| **1,624 unit tests**, **127 end-to-end tests** (Playwright), **26 contract tests** | counted on 17 October 2026; UI tests run on an isolated instance with **fictional data** |
+| **114 written design decisions** (ADRs) | each records the context, the choice, the rejected alternatives and the evidence |
+| **≈ 95,000 lines of TypeScript, 328 commits in 33 days** | from 15 September to 17 October 2026 |
 | **Work in progress** | active development: new capabilities are added regularly |
 
 ---
@@ -122,7 +122,7 @@ flowchart TB
 | **Week 1** | Orchestration core: task state machine, risk policy, verification, bounded executors, planner, Coworking, friction engine. Voice-driven Jarvis. | ADR-006 → 029 |
 | **Week 2** | HR department: reviewed CV pipeline, automated job search, personal data compartmentalised. Defensive security department. Profiling, live tracking, drift alerts, brain selector, Coworking as a shared workshop. | ADR-030 → 060 |
 | **Week 3** | Local SOC (Sysmon, catalogue broker, Windows Hello). The **kernel**: identity, capability tokens, tool-level kill switch, bounded child processes, signed ledger, single scheduler. Agents' lounge, memory under approval, Digital commerce department. | ADR-061 → 097 |
-| **Week 4** | Server administration by recipes, autonomous market watch, **frontend gate** (Playwright + design lint), **write transactions**, Sales, External audit, post-mortems, career mentor, Back office in real conditions, then the **orbital redesign of Jarvis** and its 8 cockpits. | ADR-098 → 114 |
+| **Week 4** | Server administration by recipes, autonomous market watch, **frontend gate** (Playwright + design lint), **write transactions**, Sales, External audit, post-mortems, career mentor, Back office in real conditions, the **orbital redesign of Jarvis** and its 8 cockpits, then supply-chain updates and chat attachments. | ADR-098 → 116 |
 
 ---
 
@@ -167,6 +167,10 @@ flowchart TD
 | **Web navigator** — Iris | the **only** agent that drives a browser, in plain sight of the operator, behind a deterministic guard |
 | **Coworking** *(mode)* | a shared workshop where the team and I work together on a project, with a readable activity feed and a tamper-evident journal |
 
+![Coworking: a shared project, the two-step plan, Linus at work, the team and my constraints on the right](assets/coworking.png)
+
+> Coworking mode (test instance, fictional data): I set the goal, Hermes plans, the team executes step by step, and I can add a constraint at any time.
+
 ➡️ Who each agent is and what it does: [**The team**](docs/en/team.md)
 
 ---
@@ -181,13 +185,19 @@ The interface was fully redesigned in mid-October. The home is a **ring in persp
 
 | Tasks cockpit | GRC cockpit |
 |---|---|
-| ![Tasks cockpit: to decide, running, failures, scheduled; the detail explains why a task is waiting](assets/cockpit-taches.png) | ![GRC cockpit: ISO / CIS / ANSSI control matrix, open gaps, compliance by family](assets/cockpit-grc.png) |
+| ![Tasks cockpit: to decide, running, failures, scheduled; the detail explains why a task is waiting](assets/cockpit-taches.png) | ![GRC cockpit: control matrix by framework, open gaps, compliance by family](assets/cockpit-grc.png) |
 | everything the agents run, all departments together; a risky task explains **why** it waits for my click, and its diff was prepared in an isolated worktree | the compliance posture: control matrix, ranked gaps, Elias's opinion, passive audits, evidence and seal |
 
 | Jobs cockpit | The live team |
 |---|---|
 | ![Jobs cockpit: offers scored by Inès, diagnosis, CV and letter prepared on request](assets/cockpit-emploi.png) | ![Team drawer: who is working, on what, since when; agents proposed by the agent factory](assets/equipe-direct.png) |
 | offers scored by Inès (an explainable grid), the diagnosis, and the “prepare CV and letter” button; the “apply” click stays mine | who is working, on what, since when; each agent's card; agents **proposed** by the agent factory, before they exist |
+
+**Systems** gathers what keeps the whole thing running: services, the choice of brain, a diagnostic, and since mid-October the **supply-chain updates** (agent engine, local model, Node.js, dependencies, command-line tools): every version is read, an update is a task to approve, never a free command.
+
+<p align="center"><img src="assets/systemes-mises-a-jour.png" alt="Systems › Updates: version of each component, update available, manual step or task to approve" width="760"></p>
+
+The conversation also accepts **attachments** (images, text, PDF) sent to the director within a turn, bounded in size and type.
 
 The rules of this interface are themselves enforced by code: a written **design system** (tokens, components, accessibility), a **design lint** that rejects a hard-coded colour or a button with no effect, and a **gate** (type-check, lint, build, bundle budget, Playwright at three widths) that must be green before any merge.
 
@@ -201,6 +211,8 @@ Running a team means knowing who is working, on what, for how long and at what c
 
 ![Profiling summary: requests, time, tokens, cost, approvals, alerts](assets/profiling-summary.png)
 
+> Screenshots from late September on the real instance (structured areas only). Profiling lives in the side panel, unchanged by the redesign.
+
 <p align="center"><img src="assets/profiling-timeline.png" alt="Activity timeline per agent over 24 hours" width="720"></p>
 
 **Per agent:** requests, failures, working time, model thinking time, tool calls, tokens, cost and favourite tools. **Per tool:** every tool and MCP server used, how many times, how long, and by which agents.
@@ -209,9 +221,11 @@ Running a team means knowing who is working, on what, for how long and at what c
 |---|---|
 | ![Activity table per agent](assets/profiling-agents.png) | ![Tools and MCP servers: calls, latency, agents](assets/profiling-tools.png) |
 
-**And live:** tracking shows what is happening *now*, even when several tasks run in parallel, with every step (tool, duration, delegated agent) and deterministic **drift alerts**: a write during a read-only task, a delegation to a sensitive department, a loop, repeated failures.
+**And live:** an agent ticker in the bar (blue: working, amber: waiting for my decision, red: failed, mint: done) and, in the Tasks cockpit, every task with its agent, mode, executor and the reason it is waiting. Deterministic **drift alerts** watch every task: a write during a read-only task, a delegation to a sensitive department, a loop, repeated failures.
 
-![Three agents working in parallel, tracked live](assets/live-tracking.png)
+![Tasks cockpit live: four agents at work, a high-risk task waiting for Windows Hello, a failure explained](assets/taches-en-direct.png)
+
+> Test instance, fictional data: Hélène waits for my approval under Windows Hello, Linus works in an isolated worktree, Léo has a failed pass whose cause is displayed.
 
 > **Why it matters:** observability turns a black box into a team you can actually run.
 
@@ -221,11 +235,11 @@ Running a team means knowing who is working, on what, for how long and at what c
 
 Hermes stays the same; only the brain behind him changes. From the **Systems** tab, I switch the whole team from a local model on my graphics card to Claude, and back, in about fifteen seconds.
 
-<p align="center"><img src="assets/brain-selector.png" alt="Brain selector: local model or Claude, with sub-model" width="380"></p>
+<p align="center"><img src="assets/systemes-cerveaux.png" alt="Systems › Brains: current local engine, switch to Claude by subscription, available providers and models" width="760"></p>
 
 - **Local** when I want privacy and zero cost; **Claude** for demanding work.
-- **Some agents keep a fixed brain**: the director and part of the development department run on Claude; the **Red Team** and the **Lounge** always stay local; HR agents refuse any provider other than the local model or Claude.
-- **Closed list:** only tested models can be chosen, no free-text input.
+- **Some agents keep a fixed brain**: the director and part of the development department run on Claude; the **Red Team** and the Lounge's autonomous exchanges always stay local; HR agents refuse any provider other than the local model or Claude.
+- **Closed list:** only tested models can be chosen (Claude Fable 5.1, Opus 5.5, Sonnet 5, Haiku 4.5, and the local model), no free-text input.
 
 ---
 
@@ -249,11 +263,15 @@ At first, the UI was the security. Now security lives **in the kernel**. Everyth
 
 The defensive security department does more than give advice: it relies on a **security operations centre (SOC) running on the workstation**, backed by the kernel, and on a **governance, risk and compliance** cockpit.
 
+![SOC cockpit: event pulse, posture, unified alert feed (events, egress, network, controls), safe mode and emergency stop](assets/cockpit-soc.png)
+
+> Test instance, fictional data: the unified feed mixes a refused write outside the working folder, an unexpected network flow attributed to an agent, a “CONFIDENTIAL” egress and a non-compliant control.
+
 - **Real telemetry** (including Sysmon with a custom configuration), normalised, where every network egress is attributed to the agent that caused it.
 - **Agent egress registry**: what each agent attempts towards the outside, classified; a real-time hook cuts the network for sensitive profiles.
 - **Catalogue broker**: privileged actions go through a closed list, with a **UAC elevation per action**.
 - **Chained audit, seal, emergency stop and safe mode** to keep control even during an incident; **post-mortems** generated by code and validated by me.
-- **GRC**: control matrix (ISO 27001, CIS, ANSSI, NIST CSF), risk register, Elias's compliance opinions, passive external audits, and a launcher for external GRC tools.
+- **GRC**: control matrix referenced against CIS, ISO/IEC 27001:2022 (Annex A) and NIST CSF 2.0, risk register, Elias's compliance opinions, passive external audits, and a launcher for open-source GRC tools (Green Shield GRC, CISO Assistant).
 
 > Presented in broad strokes: this repository shows the intent and the safeguards, not the operational details.
 
@@ -264,6 +282,8 @@ The defensive security department does more than give advice: it relies on a **s
 A team is more than a delegation tree. OS-Agentique has a **Lounge**: a visible thread where agents talk to each other, on the **local** brain, within a policy-bounded frame.
 
 ![The agents' lounge: a retrospective between the Architect, Linus and Grace; on the right, the proposed project and the memory notes awaiting approval](assets/salon.png)
+
+> A real retrospective, captured in early October on an isolated demo (local brain); the top bar is the previous interface's, the lounge itself is unchanged.
 
 - An agent can **open a ticket**, mention another, attach a piece of evidence (a diff, an error); the thread follows the project it gave birth to.
 - Agents **propose memory notes** and **projects**; nothing is kept or opened without my approval.
@@ -298,7 +318,7 @@ All the code of this project was written by AI agents (Claude Code, occasionally
 | Rule | What it changes |
 |---|---|
 | **A gate before the code** | every feature first answers WHAT · WHY · INTERFACE · SECURITY · TEST · ROLLBACK; no code without it |
-| **Every decision written down** | 112 ADRs: context, choice, rejected alternatives, evidence. When a decision is amended, the ADR says so |
+| **Every decision written down** | 114 ADRs: context, choice, rejected alternatives, evidence. When a decision is amended, the ADR says so |
 | **Blueprints first** | big projects (kernel, SOC, departments, UI redesign) start with a reviewed design document, then **lots** delivered green one by one |
 | **Builder ≠ verifier** | one agent builds in its worktree, another reviews, measures on screen and runs the gate; two sessions never write the same files |
 | **Proof, not promises** | isolated tests (never on the real folders), contract tests for every external tool, Playwright on fictional data, design lint; “the LLM says it's done” is never evidence |

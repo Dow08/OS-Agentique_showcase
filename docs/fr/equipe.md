@@ -21,8 +21,8 @@ flowchart TD
     DEV --> A1["Architecte"] & A2["Linus ✍️"] & A3["Grace"] & A4["Testeur ✍️"] & A5["Auditeur ISO"]
     RH --> B1["Camille ✍️"] & B2["Sacha"] & B3["Léo"] & B4["Inès"] & B5["Basile"]
     SEC --> C1["Mira ✍️"] & C2["Elias"] & C3["Owen"]
-    RED --> D1["Spectre"] & D2["Breach"] & D3["Aegis"]
-    TIK --> E1["Noé ✍️"] & E2["Jules ✍️"] & E3["Lina"] & E4["Maya"] & E5["Hugo"] & E6["Clara"]
+    RED --> D1["Spectre ✍️"] & D2["Breach ✍️"] & D3["Aegis"]
+    TIK --> E1["Noé"] & E2["Jules"] & E3["Lina"] & E4["Maya"] & E5["Hugo"] & E6["Clara"]
     COM --> G1["Théo"] & G2["Chloé"]
     SG --> F1["Hélène"] & F2["Aurèle"]
     AUD --> I1["Sable"]
@@ -86,7 +86,7 @@ Mon **seul interlocuteur**. Il écoute (voix ou clavier), décide de ce qu'il fa
 | Agent | Rôle |
 |---|---|
 | **Strike** (manager) | dirige la cellule et planifie les missions autorisées |
-| **Spectre** · **Breach** | analystes en appui des évaluations de sécurité autorisées |
+| **Spectre** ✍️ · **Breach** ✍️ | analystes en appui des évaluations de sécurité autorisées ; leur droit d'écriture n'existe que dans une tâche approuvée, « noyau seulement » : lancés hors tâche, ils n'ont aucun outil |
 | **Aegis** | **conseiller éthique** : relit chaque plan sous l'angle de l'autorisation, du périmètre, de la légalité, de la proportionnalité et de la protection des données. Il conseille, n'agit jamais |
 
 **Garde-fous intégrés :**
@@ -104,8 +104,8 @@ Un **pôle produit complet** pour construire et faire vivre un vrai site.
 | Agent | Rôle |
 |---|---|
 | **TIK** (manager) | pilote le pôle, cadre les missions et les budgets |
-| **Noé** ✍️ | designer du site |
-| **Jules** ✍️ | rédacteur web |
+| **Noé** | designer du site ; propose des maquettes, n'écrit pas dans le dépôt du site |
+| **Jules** | rédacteur web, sans accès au web : il écrit à partir des faits sourcés par la mission ; l'article est écrit par le code, sur une branche |
 | **Lina** | analyste SEO |
 | **Maya** | chargée d'études de marché |
 | **Hugo** | analyste d'infrastructure du site |

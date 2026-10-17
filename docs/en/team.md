@@ -21,8 +21,8 @@ flowchart TD
     DEV --> A1["Architect"] & A2["Linus ✍️"] & A3["Grace"] & A4["Tester ✍️"] & A5["ISO auditor"]
     RH --> B1["Camille ✍️"] & B2["Sacha"] & B3["Léo"] & B4["Inès"] & B5["Basile"]
     SEC --> C1["Mira ✍️"] & C2["Elias"] & C3["Owen"]
-    RED --> D1["Spectre"] & D2["Breach"] & D3["Aegis"]
-    TIK --> E1["Noé ✍️"] & E2["Jules ✍️"] & E3["Lina"] & E4["Maya"] & E5["Hugo"] & E6["Clara"]
+    RED --> D1["Spectre ✍️"] & D2["Breach ✍️"] & D3["Aegis"]
+    TIK --> E1["Noé"] & E2["Jules"] & E3["Lina"] & E4["Maya"] & E5["Hugo"] & E6["Clara"]
     COM --> G1["Théo"] & G2["Chloé"]
     SG --> F1["Hélène"] & F2["Aurèle"]
     AUD --> I1["Sable"]
@@ -86,7 +86,7 @@ Adversary emulation, **for defensive purposes**, under strict supervision.
 | Agent | Role |
 |---|---|
 | **Strike** (manager) | leads the cell and plans authorised engagements |
-| **Spectre** · **Breach** | analysts supporting authorised security assessments |
+| **Spectre** ✍️ · **Breach** ✍️ | analysts supporting authorised security assessments; their write right only exists inside an approved task, “kernel only”: launched outside a task, they have no tool at all |
 | **Aegis** | **ethics advisor**: reviews every plan for authorisation, scope, legality, proportionality and data protection. Advises only, never acts |
 
 **Built-in safeguards:**
@@ -103,8 +103,8 @@ A **full product department** to build and run a real website.
 | Agent | Role |
 |---|---|
 | **TIK** (manager) | leads the department, frames missions and budgets |
-| **Noé** ✍️ | website designer |
-| **Jules** ✍️ | web copywriter |
+| **Noé** | site designer; proposes mock-ups, does not write in the site repository |
+| **Jules** | web writer, with no web access: he writes from the facts sourced by the mission; the article is written by code, on a branch |
 | **Lina** | SEO analyst |
 | **Maya** | market researcher |
 | **Hugo** | website infrastructure analyst |
