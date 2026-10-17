@@ -171,6 +171,16 @@ flowchart TD
 
 > Coworking mode (test instance, fictional data): I set the goal, Hermes plans, the team executes step by step, and I can add a constraint at any time.
 
+### Who does what, from A to Z
+
+How a single request travels through the team: the director delegates, Léo searches the web without ever seeing my data, Inès scores the offers without ever touching the web, I choose, Camille writes, Sacha reviews, the result is verified, and the final click stays mine.
+
+<p align="center">
+  <img src="assets/equipe-qui-fait-quoi.en.gif" alt="Who does what: the eight departments, the interaction rules, one request followed through ten hand-offs, the added value" width="540">
+  <br/>
+  <i>75 seconds.</i> <a href="assets/equipe-qui-fait-quoi.en.mp4"><b>HD version (mp4)</b></a> · <a href="assets/equipe-qui-fait-quoi.fr.mp4">Version française</a>
+</p>
+
 ➡️ Who each agent is and what it does: [**The team**](docs/en/team.md)
 
 ---

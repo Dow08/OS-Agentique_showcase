@@ -171,6 +171,16 @@ flowchart TD
 
 > Le mode Coworking (instance de test, données fictives) : je fixe l'objectif, Hermes planifie, l'équipe exécute étape par étape, et je peux ajouter une contrainte à tout moment.
 
+### Qui fait quoi, de A à Z
+
+Comment une seule demande traverse l'équipe : le directeur délègue, Léo cherche sur le web sans jamais voir mes données, Inès note les offres sans jamais toucher au web, je choisis, Camille rédige, Sacha relit, le résultat est vérifié, et le clic final reste le mien.
+
+<p align="center">
+  <img src="assets/equipe-qui-fait-quoi.fr.gif" alt="Qui fait quoi : les huit pôles, les règles d'interaction, une demande suivie en dix relais, la plus-value" width="540">
+  <br/>
+  <i>75 secondes.</i> <a href="assets/equipe-qui-fait-quoi.fr.mp4"><b>Version HD (mp4)</b></a> · <a href="assets/equipe-qui-fait-quoi.en.mp4">English version</a>
+</p>
+
 ➡️ Qui est chaque agent et ce qu'il fait : [**L'équipe**](docs/fr/equipe.md)
 
 ---
