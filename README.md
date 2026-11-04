@@ -4,7 +4,7 @@
 
 **A personal team of AI agents that runs on my own PC, talks to me by voice, and never acts without my consent.**
 
-OS-Agentique turns a Windows 11 workstation into a small, well-run company of AI agents. I talk to a single director, *Hermes*. It understands the request, hands the work to the right department, and every sensitive action waits for my click on **Approve**. Nothing counts as done until it has been verified.
+OS-Agentique turns a Windows 11 workstation into a small, well-run company of AI agents. I talk to a single director, *Jarod*. It understands the request, hands the work to the right department, and every sensitive action waits for my click on **Approve**. Nothing counts as done until it has been verified.
 
 <p align="center">
   <img src="assets/presentation.en.gif" alt="Animated presentation of OS-Agentique: the idea, the topology, the team, the interface, the progress and the method" width="800">
@@ -26,7 +26,7 @@ OS-Agentique turns a Windows 11 workstation into a small, well-run company of AI
 | **A kernel that holds the team** | caller identity, **capability tokens** re-checked on every tool call, a **chained, signed ledger**, shutdown down to a single tool |
 | **Writes as transactions** | a task that changes code works in an **isolated worktree**; its diff waits for a second approval before it is merged in |
 | **The brain of your choice** | a local model on my graphics card (RTX 4080, **€0** per request) or Claude when a task needs more, set per team, per department or per agent |
-| **An interface built to lead** | local voice ("Hermès, …"), a **Dashboard**, an animated **Second brain**, **8 full-screen cockpits**, the team live, pending decisions |
+| **An interface built to lead** | local voice ("Jarod, …"), a **Dashboard**, an animated **Second brain**, **8 full-screen cockpits**, the team live, pending decisions |
 | **The human decides** | every medium- or high-risk action waits for my approval; a high-risk action checks my presence with **Windows Hello** |
 | **3,293 passing unit tests** (1 skipped), **681 Playwright runs**, **38 contract test files** | last full run on November 3, 2026; interface tests run on an isolated instance, with **fictional data** |
 | **148 written design decisions** (ADRs) | each records the context, the choice, the alternatives rejected and the evidence |
@@ -56,7 +56,7 @@ I wanted the opposite: **a team you can trust because it is organised like a rea
 
 ```mermaid
 flowchart LR
-    A["🎙️ Me<br/>voice or keyboard"] --> B["Hermes<br/>the director"]
+    A["🎙️ Me<br/>voice or keyboard"] --> B["Jarod<br/>the director"]
     B -->|delegates| C["Department<br/>manager"]
     C -->|assigns| D["Worker<br/>agent"]
     C -.->|consults| S["Specialist<br/>office"]
@@ -128,6 +128,8 @@ I wrote ADR-144, split the work into batches, set up a measurement bench and a *
 | One agent turn | 98,267 tokens · 58 s | **4,509 to 9,406 tokens · ~5.5 s** |
 | One director turn | 25,594 tokens · 66 s | **19,330 tokens · 9 s** |
 
+The director changed its name along the way: it was called Hermes, like the engine I had just removed. It is now called **Jarod**.
+
 - **A single guard chain.** Emergency stop, capability token, ledger entry, output bound, secret masking: every tool call goes through it, whichever brain is in use.
 - **Claude through the official client.** No subscription token is reused by hand: the engine launches the client, serves its own tools and fails closed if a native tool appears.
 - **An agent is no longer a configuration folder.** A single registry holds the team; the system is sized for several hundred agents.
@@ -154,7 +156,7 @@ I wrote ADR-144, split the work into batches, set up a measurement bench and a *
 
 ```mermaid
 flowchart TD
-    H["<b>Hermes</b><br/>Director · my only contact"]
+    H["<b>Jarod</b><br/>Director · my only contact"]
     H --> DEV["<b>Ada</b><br/>Development"]
     H --> RH["<b>Nora</b><br/>HR & jobs"]
     H --> SEC["<b>Alix</b><br/>Defensive security"]
@@ -220,20 +222,20 @@ How a single request crosses the team: the director delegates, Léo searches the
 
 ## Jarvis: a Dashboard, a second brain, eight cockpits
 
-The interface is called Jarvis; the assistant who answers is called Hermès. The home screen is a **Dashboard**: at its centre, a living sphere surrounded by the eight cockpits and the nine offices; around it, cards on demand (what awaits my decision, the store, jobs, routines, the latest deliverables). A click on the orb opens the conversation.
+The interface is called Jarvis; the assistant who answers is called Jarod. The home screen is a **Dashboard**: at its centre, a living sphere surrounded by the eight cockpits and the nine offices; around it, cards on demand (what awaits my decision, the store, jobs, routines, the latest deliverables). A click on the orb opens the conversation.
 
 ![Dashboard: the sphere at the centre, cockpits and offices in orbit, the departments on the left, what awaits a decision on the right](assets/dashboard.png)
 
 > All the screenshots on this page come from the **current Jarvis build** (November 4, 2026), on a test instance, and the interface is in French, as I use it. The agents' names and roles are real; everything else is **fictional**.
 
-**The Second brain** maps the whole system: agents, machines, processes, memory, routines, keys (by name only). When an agent works, the path lights up: Hermes, then the agent, then the tool. On the left, the "Live" column says what is happening in plain words.
+**The Second brain** maps the whole system: agents, machines, processes, memory, routines, keys (by name only). When an agent works, the path lights up: Jarod, then the agent, then the tool. On the left, the "Live" column says what is happening in plain words.
 
 ![Second brain: the map of the system, the active path lit up, the Live column](assets/second-cerveau.png)
 
 | A conversation | To handle |
 |---|---|
-| ![A sample conversation with Hermes](assets/conversation.png) | <img src="assets/a-traiter.png" alt="To handle: everything that awaits my decision, with the Approve button" width="300"> |
-| Hermes answers from what the departments report and offers to delegate | everything that awaits my decision, across all departments |
+| ![A sample conversation with Jarod](assets/conversation.png) | <img src="assets/a-traiter.png" alt="To handle: everything that awaits my decision, with the Approve button" width="300"> |
+| Jarod answers from what the departments report and offers to delegate | everything that awaits my decision, across all departments |
 
 | Tasks cockpit | GRC cockpit |
 |---|---|
@@ -248,7 +250,7 @@ The interface is called Jarvis; the assistant who answers is called Hermès. The
 | The team, live | Coworking |
 |---|---|
 | ![Team: all 47 agents by department, who is working, who awaits my decision](assets/equipe.png) | ![Coworking: a shared project, its plan, the team and my constraints](assets/coworking.png) |
-| who is working, on what, who awaits my decision; each agent's card | a shared workshop: I set the goal, Hermes plans, and I can add a constraint at any time |
+| who is working, on what, who awaits my decision; each agent's card | a shared workshop: I set the goal, Jarod plans, and I can add a constraint at any time |
 
 | Digital commerce cockpit | Back office cockpit |
 |---|---|
@@ -267,7 +269,7 @@ The interface is called Jarvis; the assistant who answers is called Hermès. The
 
 The rules of this interface are enforced by code: a written **design system**, a **design lint** that rejects a hard-coded colour or a button with no effect, and a **gate** (types, lint, build, bundle budget, Playwright at three widths) that must be green before any merge.
 
-➡️ A day, step by step: [**A day with Hermes**](docs/en/walkthrough.md)
+➡️ A day, step by step: [**A day with Jarod**](docs/en/walkthrough.md)
 
 ---
 
@@ -293,7 +295,7 @@ The newest department is also the most concrete: running a local food store. It 
 
 ## Change the brain, keep the team
 
-Hermes stays the same; only the brain behind it changes. From **Systems**, I switch the team from a local model to Claude and back. The choice is data: per team, per department or per agent, effective from the next turn.
+Jarod stays the same; only the brain behind it changes. From **Systems**, I switch the team from a local model to Claude and back. The choice is data: per team, per department or per agent, effective from the next turn.
 
 <p align="center"><img src="assets/systemes-cerveaux.png" alt="Systems › Brains: native engine, local brain in use, switch to Claude by subscription" width="760"></p>
 

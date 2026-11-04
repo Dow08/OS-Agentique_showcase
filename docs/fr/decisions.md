@@ -45,7 +45,7 @@ Le projet compte 148 décisions d'architecture écrites (ADR). En voici vingt qu
 **Pourquoi c'est important :** coût, confidentialité et performance ont été arbitrés avec des données, pas des suppositions, et le choix final reste le mien.
 
 ### 8. Rendre le travail visible
-**Problème :** Hermes a un jour répondu « Je lance une recherche… » sans appeler le moindre outil.
+**Problème :** Jarod a un jour répondu « Je lance une recherche… » sans appeler le moindre outil.
 **Décision :** l'interface montre chaque étape réelle en direct, la raison pour laquelle une tâche s'est arrêtée, et signale toute action seulement *annoncée*. Les livrables arrivent dans un dossier dédié sur mon Bureau.
 **Pourquoi c'est important :** la confiance vient de la transparence, pas d'une roue qui tourne.
 
@@ -117,4 +117,4 @@ Le projet compte 148 décisions d'architecture écrites (ADR). En voici vingt qu
 
 ---
 
-Suite : [**Conception & architecture**](conception.md) · [**L'équipe**](equipe.md) · [**Une journée avec Hermes**](parcours.md)
+Suite : [**Conception & architecture**](conception.md) · [**L'équipe**](equipe.md) · [**Une journée avec Jarod**](parcours.md)

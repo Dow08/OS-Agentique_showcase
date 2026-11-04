@@ -8,7 +8,7 @@
 
 ```mermaid
 flowchart TD
-    H["<b>Hermes</b> · Director"]
+    H["<b>Jarod</b> · Director"]
     H --> DEV["<b>Ada</b> · Development"]
     H --> RH["<b>Nora</b> · HR & job search"]
     H --> SEC["<b>Alix</b> · Defensive security"]
@@ -36,11 +36,11 @@ flowchart TD
 
 ---
 
-## 🎯 Hermes, the director
+## 🎯 Jarod, the director
 
 My **only point of contact**. It listens (voice or keyboard), decides what needs doing, hands it to the right department and reports back. It never does the work itself, and it can only *read*: that keeps the most exposed agent, the one I talk to, also the least powerful.
 
-Hermes was also the name of the open-source engine the project started on. That engine was removed on 28 October; the director kept the name.
+It was first called Hermes, like the open-source engine the project started on. That engine was removed on October 28, and the director took a name of its own: Jarod.
 
 ---
 
@@ -234,4 +234,4 @@ Not an agent but a **shared workshop**: I set a goal, the team works on it, and 
 
 ---
 
-Next: [**A day with Hermes**](walkthrough.md) · [**Design & architecture**](design.md) · [**Key decisions**](decisions.md)
+Next: [**A day with Jarod**](walkthrough.md) · [**Design & architecture**](design.md) · [**Key decisions**](decisions.md)

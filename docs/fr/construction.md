@@ -78,7 +78,7 @@ Le 27 octobre, tout s'arrête. L'activation des 152 profils de huit bureaux port
 
 Ma conclusion : le moteur ne m'apportait plus que la boucle modèle ↔ outils, un client MCP, la mémoire, les skills et la session. Tout le reste était déjà à moi. J'ai décidé de le remplacer (**ADR-144**) : tout sous mon compte Windows, Claude par son client officiel, cerveau interchangeable, interface inchangée.
 
-Le plan a été écrit le 27, relu par une IA externe, puis construit dans la nuit par des sessions parallèles, lot par lot. Le 28 au matin, le code ne contenait plus Hermes Agent. **Hermes est resté le nom du directeur.**
+Le plan a été écrit le 27, relu par une IA externe, puis construit dans la nuit par des sessions parallèles, lot par lot. Le 28 au matin, le code ne contenait plus Hermes Agent. **Jarod est resté le nom du directeur.**
 
 | Mesure | Hermes Agent | Moteur natif |
 |---|---|---|

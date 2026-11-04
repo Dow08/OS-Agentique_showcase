@@ -8,7 +8,7 @@
 
 ```mermaid
 flowchart TD
-    H["<b>Hermes</b> · Directeur"]
+    H["<b>Jarod</b> · Directeur"]
     H --> DEV["<b>Ada</b> · Développement"]
     H --> RH["<b>Nora</b> · RH & emploi"]
     H --> SEC["<b>Alix</b> · Sécurité défensive"]
@@ -36,11 +36,11 @@ flowchart TD
 
 ---
 
-## 🎯 Hermes, le directeur
+## 🎯 Jarod, le directeur
 
 Mon **seul interlocuteur**. Il écoute (voix ou clavier), décide de ce qu'il faut faire, confie le travail au bon pôle et me rend compte. Il ne fait jamais le travail lui-même et ne peut que *lire* : l'agent le plus exposé, celui à qui je parle, est aussi le moins puissant.
 
-Hermes était aussi le nom du moteur open source sur lequel le projet a démarré. Ce moteur a été retiré le 28 octobre ; le directeur a gardé son nom.
+Il s'appelait d'abord Hermes, comme le moteur open source sur lequel le projet a démarré. Ce moteur a été retiré le 28 octobre, et le directeur a pris un nom à lui : Jarod.
 
 ---
 
@@ -234,4 +234,4 @@ Pas un agent mais un **atelier partagé** : je fixe un objectif, l'équipe y tra
 
 ---
 
-Suite : [**Une journée avec Hermes**](parcours.md) · [**Conception & architecture**](conception.md) · [**Décisions clés**](decisions.md)
+Suite : [**Une journée avec Jarod**](parcours.md) · [**Conception & architecture**](conception.md) · [**Décisions clés**](decisions.md)

@@ -1,6 +1,6 @@
 <p align="right"><b>English</b> · <a href="../fr/parcours.md">Français</a> · <a href="../../README.md">← Back</a></p>
 
-# A day with Hermes
+# A day with Jarod
 
 > All the screenshots on this page come from the current Jarvis build (November 4, 2026), on a test instance, and the interface is in French, as I use it. The agents' names and roles are real; everything else is fictional, apart from the bench figures quoted elsewhere.
 
@@ -20,9 +20,9 @@ One click on the desktop shortcut starts everything: the AI model, the voice eng
 
 ## Step 2 · Just talk
 
-The Jarvis orb opens the conversation, by voice or keyboard. Hermes waits for its wake word. I ask where the team stands: it answers from what the departments report, and offers to **delegate** as soon as there is work to do.
+The Jarvis orb opens the conversation, by voice or keyboard. Jarod waits for its wake word. I ask where the team stands: it answers from what the departments report, and offers to **delegate** as soon as there is work to do.
 
-![A sample conversation with Hermes](../../assets/conversation.png)
+![A sample conversation with Jarod](../../assets/conversation.png)
 
 > **What it shows:** the director reasons, then routes the work. It knows which department does what.
 
@@ -54,13 +54,13 @@ I ask for real work: search the web for official password recommendations, then 
 
 ![The Tasks cockpit: to decide, in progress, failures, scheduled, and the detail of a task](../../assets/cockpit-taches.png)
 
-Two minutes later, Hermes reports what it did. Deliverables are listed with an **Open folder** button. A task that wrote something goes through this card: it says why it waits, with **Integrate** or **Discard**.
+Two minutes later, Jarod reports what it did. Deliverables are listed with an **Open folder** button. A task that wrote something goes through this card: it says why it waits, with **Integrate** or **Discard**.
 
 ![A task prepared in an isolated copy, ready to be integrated or discarded](../../assets/taches-diff.png)
 
 Today, the **Second brain** shows these links too: who delegates to whom, which agent calls which tool, live.
 
-![Second brain: "Live" column, active paths between Hermes, departments and tools](../../assets/second-cerveau.png)
+![Second brain: "Live" column, active paths between Jarod, departments and tools](../../assets/second-cerveau.png)
 
 > **What it shows:** transparency. I see *what* is being done, step by step, not a spinning wheel. And the result is a real file, not a promise.
 

@@ -32,7 +32,7 @@ flowchart LR
 
 For six weeks, I built **around** an open-source engine, Hermes Agent (Nous Research). That was the right choice at the start: it spared me writing what already existed, and let me focus on the layer that turns a lone agent into a supervised team.
 
-On 28 October, I removed it from the code (ADR-144). The story is in [How it was built](build-log.md#week-6--26-to-29-october-leaving-the-engine). The agent loop now lives in the repository. Hermes remains the director's name.
+On 28 October, I removed it from the code (ADR-144). The story is in [How it was built](build-log.md#week-6--26-to-29-october-leaving-the-engine). The agent loop now lives in the repository. Jarod remains the director's name.
 
 ```mermaid
 flowchart TB
@@ -128,7 +128,7 @@ I retrained in cybersecurity, so the system is designed like a defended network,
 
 Honest lessons that shaped the design:
 
-- **An AI can announce work without doing it.** Hermes once answered "I'm launching a search…" without calling a single tool. Since then, the interface shows every real step live, and states plainly when an action was only *announced*.
+- **An AI can announce work without doing it.** Jarod once answered "I'm launching a search…" without calling a single tool. Since then, the interface shows every real step live, and states plainly when an action was only *announced*.
 - **A written rule is not an enforced rule.** A cross-audit showed that my risk rule existed in the documentation but was not applied in one code path. I fixed it and wrote down the principle: a rule only counts if a test proves it.
 - **The right model is not always the biggest.** I compared several local models on agent tasks. The one I kept scored 9/10.
 - **A dependency can stop everything without warning.** An upstream engine update, combined with the team's growth, blocked every turn for several hours. I had put several workarounds in place; none fixed the cause.
@@ -136,4 +136,4 @@ Honest lessons that shaped the design:
 
 ---
 
-Next: [**Meet the team**](team.md) · [**A day with Hermes**](walkthrough.md) · [**Key decisions**](decisions.md)
+Next: [**Meet the team**](team.md) · [**A day with Jarod**](walkthrough.md) · [**Key decisions**](decisions.md)

@@ -78,7 +78,7 @@ On 27 October, everything stops. Activating the 152 profiles of eight bureaus br
 
 My conclusion: the engine was now only giving me the model ↔ tools loop, an MCP client, memory, skills and the session. Everything else was already mine. I decided to replace it (**ADR-144**): everything under my Windows account, Claude through its official client, an interchangeable brain, an unchanged interface.
 
-The plan was written on the 27th, reviewed by an external AI, then built overnight by parallel sessions, lot by lot. By the morning of the 28th, the code no longer contained Hermes Agent. **Hermes stayed the director's name.**
+The plan was written on the 27th, reviewed by an external AI, then built overnight by parallel sessions, lot by lot. By the morning of the 28th, the code no longer contained Hermes Agent. **Jarod stayed the director's name.**
 
 | Measure | Hermes Agent | Native engine |
 |---|---|---|

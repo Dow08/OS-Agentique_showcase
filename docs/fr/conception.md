@@ -32,7 +32,7 @@ flowchart LR
 
 Pendant six semaines, j'ai construit **autour** d'un moteur open source, Hermes Agent (Nous Research). C'était le bon choix au départ : il m'a évité d'écrire ce qui existait déjà, et m'a laissé me concentrer sur la couche qui transforme un agent isolé en équipe supervisée.
 
-Le 28 octobre, je l'ai retiré du code (ADR-144). Le récit est dans [Comment ça a été construit](construction.md#semaine-6--26-au-29-octobre--sortir-du-moteur). La boucle d'agent est maintenant dans le dépôt. Hermes reste le nom du directeur.
+Le 28 octobre, je l'ai retiré du code (ADR-144). Le récit est dans [Comment ça a été construit](construction.md#semaine-6--26-au-29-octobre--sortir-du-moteur). La boucle d'agent est maintenant dans le dépôt. Jarod reste le nom du directeur.
 
 ```mermaid
 flowchart TB
@@ -128,7 +128,7 @@ Je me suis reconverti vers la cybersécurité : le système est donc conçu comm
 
 Des leçons honnêtes qui ont façonné la conception :
 
-- **Une IA peut annoncer un travail sans le faire.** Hermes a un jour répondu « Je lance une recherche… » sans appeler le moindre outil. Depuis, l'interface montre chaque étape réelle en direct, et dit explicitement quand une action a seulement été *annoncée*.
+- **Une IA peut annoncer un travail sans le faire.** Jarod a un jour répondu « Je lance une recherche… » sans appeler le moindre outil. Depuis, l'interface montre chaque étape réelle en direct, et dit explicitement quand une action a seulement été *annoncée*.
 - **Une règle écrite n'est pas une règle appliquée.** Un audit croisé a montré que ma règle de risque existait dans la documentation mais n'était pas appliquée dans un chemin du code. Je l'ai corrigée, et j'ai écrit le principe : une règle ne compte que si un test la prouve.
 - **Le bon modèle n'est pas toujours le plus gros.** J'ai comparé plusieurs modèles locaux sur des tâches d'agent. Celui que j'ai retenu a obtenu 9/10.
 - **Une dépendance peut tout arrêter sans prévenir.** Une mise à jour du moteur amont, combinée à la croissance de l'équipe, a bloqué tous les tours pendant plusieurs heures. J'avais posé plusieurs parades ; aucune ne réglait la cause.
@@ -136,4 +136,4 @@ Des leçons honnêtes qui ont façonné la conception :
 
 ---
 
-Suite : [**L'équipe**](equipe.md) · [**Une journée avec Hermes**](parcours.md) · [**Décisions clés**](decisions.md)
+Suite : [**L'équipe**](equipe.md) · [**Une journée avec Jarod**](parcours.md) · [**Décisions clés**](decisions.md)

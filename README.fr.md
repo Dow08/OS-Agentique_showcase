@@ -4,7 +4,7 @@
 
 **Une équipe personnelle d'agents IA qui tourne sur mon propre PC, me parle à la voix, et n'agit jamais sans mon accord.**
 
-OS-Agentique transforme un poste Windows 11 en une petite entreprise d'agents IA bien organisée. Je parle à un seul directeur, *Hermes*. Il comprend la demande, confie le travail au bon pôle, et toute action sensible attend mon clic sur **Approuver**. Rien n'est considéré comme terminé tant que ce n'est pas vérifié.
+OS-Agentique transforme un poste Windows 11 en une petite entreprise d'agents IA bien organisée. Je parle à un seul directeur, *Jarod*. Il comprend la demande, confie le travail au bon pôle, et toute action sensible attend mon clic sur **Approuver**. Rien n'est considéré comme terminé tant que ce n'est pas vérifié.
 
 <p align="center">
   <img src="assets/presentation.fr.gif" alt="Présentation animée d'OS-Agentique : l'idée, la topologie, l'équipe, l'interface, les avancées et la méthode" width="800">
@@ -26,7 +26,7 @@ OS-Agentique transforme un poste Windows 11 en une petite entreprise d'agents IA
 | **Un noyau qui tient l'équipe** | identité de l'appelant, **jetons de capacité** recontrôlés à chaque appel d'outil, **journal chaîné et signé**, arrêt jusqu'au niveau d'un seul outil |
 | **Des écritures en transaction** | une tâche qui modifie du code travaille dans un **worktree isolé** ; son diff attend une seconde approbation avant de s'intégrer |
 | **Le cerveau de son choix** | modèle local sur ma carte graphique (RTX 4080, **0 €** par requête) ou Claude quand une tâche demande plus, réglable par équipe, par pôle ou par agent |
-| **Une interface pour diriger** | voix locale (« Hermès, … »), **Dashboard**, **Second cerveau** animé, **8 cockpits** plein écran, équipe en direct, décisions en attente |
+| **Une interface pour diriger** | voix locale (« Jarod, … »), **Dashboard**, **Second cerveau** animé, **8 cockpits** plein écran, équipe en direct, décisions en attente |
 | **L'humain décide** | toute action à risque moyen ou élevé attend mon approbation ; une action à risque élevé vérifie ma présence par **Windows Hello** |
 | **3 293 tests unitaires verts** (1 ignoré), **681 passages Playwright**, **38 fichiers de contrat** | dernière passe complète le 3 novembre 2026 ; les tests d'interface tournent sur une instance isolée, avec des **données fictives** |
 | **148 décisions de conception écrites** (ADR) | chacune consigne le contexte, le choix, les alternatives écartées et la preuve |
@@ -56,7 +56,7 @@ Je voulais l'inverse : **une équipe digne de confiance parce qu'elle est organi
 
 ```mermaid
 flowchart LR
-    A["🎙️ Moi<br/>voix ou clavier"] --> B["Hermes<br/>le directeur"]
+    A["🎙️ Moi<br/>voix ou clavier"] --> B["Jarod<br/>le directeur"]
     B -->|délègue| C["Manager<br/>du pôle"]
     C -->|confie| D["Agent<br/>exécutant"]
     C -.->|consulte| S["Bureau de<br/>spécialistes"]
@@ -128,6 +128,8 @@ J'ai écrit l'ADR-144, découpé le chantier en lots, posé un banc de mesure et
 | Un tour d'agent | 98 267 jetons · 58 s | **4 509 à 9 406 jetons · ~5,5 s** |
 | Un tour du directeur | 25 594 jetons · 66 s | **19 330 jetons · 9 s** |
 
+Le directeur a changé de nom au passage : il s'appelait Hermes, comme le moteur que je venais de retirer. Il s'appelle désormais **Jarod**.
+
 - **Une seule chaîne de garde.** Arrêt d'urgence, jeton de capacité, écriture au journal, borne de sortie, masquage des secrets : chaque appel d'outil y passe, quel que soit le cerveau.
 - **Claude par le client officiel.** Aucun jeton d'abonnement n'est réutilisé à la main : le moteur lance le client, sert ses propres outils et échoue fermé si un outil natif apparaît.
 - **Un agent n'est plus un dossier de configuration.** Un registre unique tient l'équipe ; le système est dimensionné pour plusieurs centaines d'agents.
@@ -154,7 +156,7 @@ J'ai écrit l'ADR-144, découpé le chantier en lots, posé un banc de mesure et
 
 ```mermaid
 flowchart TD
-    H["<b>Hermes</b><br/>Directeur · mon seul interlocuteur"]
+    H["<b>Jarod</b><br/>Directeur · mon seul interlocuteur"]
     H --> DEV["<b>Ada</b><br/>Développement"]
     H --> RH["<b>Nora</b><br/>RH & emploi"]
     H --> SEC["<b>Alix</b><br/>Sécurité défensive"]
@@ -220,20 +222,20 @@ Comment une seule demande traverse l'équipe : le directeur délègue, Léo cher
 
 ## Jarvis : un Dashboard, un second cerveau, huit cockpits
 
-L'interface s'appelle Jarvis ; l'assistant qui répond s'appelle Hermès. L'accueil est un **Dashboard** : au centre, une sphère vivante entourée des huit cockpits et des neuf bureaux ; autour, des cases à la demande (ce qui attend ma décision, le magasin, l'emploi, les routines, les derniers livrables). Un clic sur l'orbe ouvre la conversation.
+L'interface s'appelle Jarvis ; l'assistant qui répond s'appelle Jarod. L'accueil est un **Dashboard** : au centre, une sphère vivante entourée des huit cockpits et des neuf bureaux ; autour, des cases à la demande (ce qui attend ma décision, le magasin, l'emploi, les routines, les derniers livrables). Un clic sur l'orbe ouvre la conversation.
 
 ![Dashboard : la sphère au centre, les cockpits et les bureaux en orbite, à gauche les pôles, à droite ce qui attend une décision](assets/dashboard.png)
 
 > Toutes les captures de cette page viennent du **build actuel de Jarvis** (4 novembre 2026), sur une instance de test. Les prénoms et rôles des agents sont les vrais ; tout le reste est **fictif**.
 
-**Le Second cerveau** cartographie tout le système : agents, machines, processus, mémoire, routines, clés (par nom seulement). Quand un agent travaille, le chemin s'allume : Hermes, puis l'agent, puis l'outil. À gauche, la colonne « En direct » raconte ce qui se passe, en clair.
+**Le Second cerveau** cartographie tout le système : agents, machines, processus, mémoire, routines, clés (par nom seulement). Quand un agent travaille, le chemin s'allume : Jarod, puis l'agent, puis l'outil. À gauche, la colonne « En direct » raconte ce qui se passe, en clair.
 
 ![Second cerveau : la carte du système, le chemin actif allumé, la colonne En direct](assets/second-cerveau.png)
 
 | Une conversation | À traiter |
 |---|---|
-| ![Une conversation d'exemple avec Hermes](assets/conversation.png) | <img src="assets/a-traiter.png" alt="À traiter : tout ce qui attend ma décision, avec le bouton Approuver" width="300"> |
-| Hermes répond à partir de ce que lui disent les pôles et propose de déléguer | tout ce qui attend ma décision, tous pôles confondus |
+| ![Une conversation d'exemple avec Jarod](assets/conversation.png) | <img src="assets/a-traiter.png" alt="À traiter : tout ce qui attend ma décision, avec le bouton Approuver" width="300"> |
+| Jarod répond à partir de ce que lui disent les pôles et propose de déléguer | tout ce qui attend ma décision, tous pôles confondus |
 
 | Cockpit Tâches | Cockpit GRC |
 |---|---|
@@ -248,7 +250,7 @@ L'interface s'appelle Jarvis ; l'assistant qui répond s'appelle Hermès. L'accu
 | L'équipe en direct | Coworking |
 |---|---|
 | ![Équipe : les 47 agents par pôle, qui travaille, qui attend ma décision](assets/equipe.png) | ![Coworking : un chantier partagé, son plan, l'équipe et mes contraintes](assets/coworking.png) |
-| qui travaille, sur quoi, qui attend ma décision ; la fiche de chaque agent | un atelier partagé : je fixe l'objectif, Hermes planifie, et je peux ajouter une contrainte à tout moment |
+| qui travaille, sur quoi, qui attend ma décision ; la fiche de chaque agent | un atelier partagé : je fixe l'objectif, Jarod planifie, et je peux ajouter une contrainte à tout moment |
 
 | Cockpit Commerce digital | Cockpit Secrétariat |
 |---|---|
@@ -267,7 +269,7 @@ L'interface s'appelle Jarvis ; l'assistant qui répond s'appelle Hermès. L'accu
 
 Les règles de cette interface sont gardées par le code : un **système de design** écrit, un **lint de design** qui refuse une couleur en dur ou un bouton sans effet, et une **gate** (typage, lint, build, budget des bundles, Playwright sur trois largeurs) qui doit être verte avant toute fusion.
 
-➡️ Le parcours d'une journée, étape par étape : [**Une journée avec Hermes**](docs/fr/parcours.md)
+➡️ Le parcours d'une journée, étape par étape : [**Une journée avec Jarod**](docs/fr/parcours.md)
 
 ---
 
@@ -293,7 +295,7 @@ Le dernier pôle est aussi le plus concret : l'exploitation d'un commerce alimen
 
 ## Changer de cerveau, garder l'équipe
 
-Hermes reste le même ; seul le cerveau derrière lui change. Depuis **Systèmes**, je fais passer l'équipe d'un modèle local à Claude, et inversement. Le choix est une donnée : par équipe, par pôle ou par agent, applicable dès le tour suivant.
+Jarod reste le même ; seul le cerveau derrière lui change. Depuis **Systèmes**, je fais passer l'équipe d'un modèle local à Claude, et inversement. Le choix est une donnée : par équipe, par pôle ou par agent, applicable dès le tour suivant.
 
 <p align="center"><img src="assets/systemes-cerveaux.png" alt="Systèmes › Cerveaux : moteur natif, cerveau actuel local, bascule vers Claude par abonnement" width="760"></p>
 

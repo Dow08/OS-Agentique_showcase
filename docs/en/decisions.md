@@ -45,7 +45,7 @@ The project holds 148 written decision records (ADRs). Here are twenty that best
 **Why it matters:** cost, privacy and performance were weighed with data, not guesses, and the final choice stays mine.
 
 ### 8. Make the work visible
-**Problem:** Hermes once answered "I'm launching a search…" without calling a single tool.
+**Problem:** Jarod once answered "I'm launching a search…" without calling a single tool.
 **Decision:** the interface shows every real step live, the reason why a task stopped, and flags any action that was only *announced*. Deliverables land in a dedicated folder on my Desktop.
 **Why it matters:** trust comes from transparency, not from a spinning wheel.
 
@@ -117,4 +117,4 @@ The project holds 148 written decision records (ADRs). Here are twenty that best
 
 ---
 
-Next: [**Design & architecture**](design.md) · [**Meet the team**](team.md) · [**A day with Hermes**](walkthrough.md)
+Next: [**Design & architecture**](design.md) · [**Meet the team**](team.md) · [**A day with Jarod**](walkthrough.md)
