@@ -2,7 +2,7 @@
 
 # Une journée avec Hermes
 
-> **Ce qui est daté.** Les captures marquées *septembre* viennent de l'interface de fin septembre et de l'ancien moteur. Elles restent ici parce qu'elles montrent de vraies réponses du modèle sur une vraie machine. L'interface a changé depuis, pas les étapes : même porte unique, mêmes approbations, même vérification. Les captures récentes sont prises sur l'instance de test, avec des **données fictives**.
+> Toutes les captures de cette page viennent du build actuel de Jarvis (4 novembre 2026), sur une instance de test. Les prénoms et rôles des agents sont les vrais ; tout le reste est fictif, à l'exception des chiffres du banc cités ailleurs.
 
 Le système réel, étape par étape. Rien n'est une maquette. Les données de démonstration sont fictives partout où des informations personnelles apparaîtraient.
 
@@ -20,11 +20,9 @@ Un clic sur le raccourci du Bureau lance tout : le modèle IA, le moteur vocal, 
 
 ## Étape 2 · Simplement parler
 
-L'orbe Jarvis ouvre la conversation, à la voix ou au clavier. Hermes attend son mot d'activation. Je lui demande de m'aider à structurer un projet : ici, le site web d'une boulangerie. Hermes répond avec un plan structuré, puis propose de **déléguer** l'étape suivante au bon pôle.
+L'orbe Jarvis ouvre la conversation, à la voix ou au clavier. Hermes attend son mot d'activation. Je lui demande où en est l'équipe : il répond à partir de ce que lui disent les pôles, et il propose de **déléguer** dès qu'il y a un travail à faire.
 
-![Une vraie conversation avec Hermes](../../assets/jarvis-conversation.png)
-
-*Capture de septembre.*
+![Une conversation d'exemple avec Hermes](../../assets/conversation.png)
 
 > **Ce que ça montre :** le directeur réfléchit, puis oriente le travail. Il sait quel pôle fait quoi.
 
@@ -34,9 +32,7 @@ L'orbe Jarvis ouvre la conversation, à la voix ou au clavier. Hermes attend son
 
 Je lui demande de *créer un fichier*. Cela modifie quelque chose sur mon PC : la tâche est classée **risque moyen** et s'arrête. L'orbe passe à l'ambre : **approbation requise**.
 
-![L'action attend mon approbation](../../assets/jarvis-approbation.png)
-
-*Capture de septembre.*
+<p align="center"><img src="../../assets/a-traiter.png" alt="À traiter : ce qui attend ma décision, avec le bouton Approuver" width="380"></p>
 
 > **Ce que ça montre :** l'humain dans la boucle. Rien de ce qui modifie ma machine ne s'exécute sans mon clic explicite.
 
@@ -44,11 +40,9 @@ Je lui demande de *créer un fichier*. Cela modifie quelque chose sur mon PC : l
 
 ## Étape 4 · Je garde la main
 
-J'ai refusé cette action (ici, la même interface sur téléphone). Hermes confirme : **« Action refusée. »** Rien ne s'est exécuté.
+Je peux approuver ou refuser depuis **À traiter**, depuis le cockpit Tâches ou depuis mon téléphone. Si je refuse, rien ne s'exécute.
 
-<p align="center"><img src="../../assets/jarvis-mobile.png" alt="Action refusée, sur mobile" width="300"></p>
-
-*Capture de septembre.*
+<p align="center"><img src="../../assets/mobile.png" alt="Jarvis sur téléphone : ce qui attend une décision" width="300"></p>
 
 > **Ce que ça montre :** un refus est définitif, et l'interface fonctionne aussi sur téléphone.
 
@@ -58,15 +52,11 @@ J'ai refusé cette action (ici, la même interface sur téléphone). Hermes conf
 
 Je demande un vrai travail : chercher sur le web les recommandations officielles sur les mots de passe, puis écrire une synthèse en 5 points. J'approuve, et chaque étape réelle s'affiche en direct : la recherche web, sa durée, et même le début de ce que l'outil a renvoyé.
 
-![Une tâche en cours, chaque étape affichée en direct](../../assets/step5-live.png)
+![Le cockpit Tâches : à décider, en cours, échecs, planifiées, et le détail d'une tâche](../../assets/cockpit-taches.png)
 
-*Capture de septembre.*
+Deux minutes plus tard, Hermes rend compte de ce qu'il a fait. Les livrables sont listés avec un bouton **Ouvrir le dossier**. Une tâche qui a écrit passe par cette fiche : elle dit pourquoi elle attend, avec **Intégrer** ou **Jeter**.
 
-Deux minutes plus tard, Hermes rend compte de ce qu'il a fait. Les livrables sont listés avec un bouton **Ouvrir le dossier**. *(Le chemin du dossier local est flouté.)*
-
-![La tâche terminée et ses livrables](../../assets/step5-done.png)
-
-*Capture de septembre.*
+![Une tâche préparée dans une copie isolée, prête à être intégrée ou jetée](../../assets/taches-diff.png)
 
 Aujourd'hui, le **Second cerveau** montre aussi ces liens : qui délègue à qui, quel agent appelle quel outil, en direct.
 
@@ -82,15 +72,13 @@ Pour cette démonstration, l'outil de CV tourne sur une copie isolée avec un **
 
 Nora, la manager RH, lance le circuit CV : Camille rédige, Sacha relit. Le tour 1 n'a pas été validé : Camille a donc révisé le CV, et Sacha l'a validé au tour 2.
 
-![Le circuit CV en cours : délégations, appels à l'outil de CV, tours de relecture](../../assets/step6-live.png)
+![Le cockpit Emploi : l'offre notée, le diagnostic, le bouton qui lance le CV et la lettre](../../assets/cockpit-emploi.png)
 
-Le CV validé est livré (PDF design, PDF lisible par les logiciels de recrutement, Word, et un fichier de provenance qui relie chaque ligne à sa source). Et comme l'offre demande des choses que le profil ne montre pas, **Nora pose la question au candidat** au lieu de les inventer. *(Le chemin du dossier local est flouté.)*
+Le CV validé est livré (PDF design, PDF lisible par les logiciels de recrutement, Word, et un fichier de provenance qui relie chaque ligne à sa source). Et comme l'offre demande des choses que le profil ne montre pas, **Nora pose la question au candidat** au lieu de les inventer. Une tâche qui a écrit passe par cette fiche : elle dit pourquoi elle attend, avec **Intégrer** ou **Jeter**.
 
-![CV validé au tour 2, livrables et questions de Nora](../../assets/step6-done.png)
+![La candidature suivie dans le cockpit Emploi](../../assets/candidatures.png)
 
 <p align="center"><img src="../../assets/step6-cv-fictif.png" alt="Le CV généré pour le candidat fictif" width="520"><br/><i>Le CV produit pour le candidat fictif : une page, adaptée à l'offre, chaque ligne traçable.</i></p>
-
-*Captures de septembre.*
 
 > **Ce que ça montre :** un circuit multi-agents avec contrôle qualité intégré, et une IA qui demande au lieu d'inventer.
 
@@ -124,11 +112,9 @@ Le planning de la semaine est proposé par le code d'après les horaires, les co
 
 Tout ce que fait l'équipe est mesuré : qui a travaillé quand, combien de temps, avec quels outils, combien de jetons et pour quel coût. C'est aujourd'hui dans **Systèmes › Performance**.
 
-![Qui a travaillé quand, par agent](../../assets/profiling-timeline.png)
+![Systèmes › Performance : qui travaille, qui a travaillé quand](../../assets/systemes-performance.png)
 
-![Activité par agent : temps, outils, jetons, coût](../../assets/profiling-agents.png)
-
-*Captures de septembre.*
+![Le profilage détaillé : demandes, temps, jetons, appels d'outils](../../assets/profilage.png)
 
 > **Ce que ça montre :** l'observabilité. Rien n'est inventé ; chaque chiffre est traçable.
 
@@ -138,9 +124,7 @@ Tout ce que fait l'équipe est mesuré : qui a travaillé quand, combien de temp
 
 La carte de l'équipe, de ses compétences et de ses outils est générée à partir de ce qui est réellement installé. Je la lis dans le Second cerveau. Le directeur, lui, connaît son équipe par sa fiche. Injecter la carte complète à chaque tour coûte cher, donc c'est coupé par défaut, en attendant la mesure.
 
-![Carte de l'équipe et des outils](../../assets/jarvis-carte.png)
-
-*Capture de septembre.*
+![L'équipe : les 47 agents, par pôle, avec leur état](../../assets/equipe.png)
 
 > **Ce que ça montre :** une carte produite par le code, jamais recopiée à la main.
 

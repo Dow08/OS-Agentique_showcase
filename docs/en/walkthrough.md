@@ -2,7 +2,7 @@
 
 # A day with Hermes
 
-> **What is dated.** Screenshots marked *September* come from the late-September interface and the old engine. They stay here because they show real model answers on a real machine. The interface has changed since, not the steps: same single door, same approvals, same verification. Recent screenshots are taken on the test instance, with **fictional data**.
+> All the screenshots on this page come from the current Jarvis build (November 4, 2026), on a test instance, and the interface is in French, as I use it. The agents' names and roles are real; everything else is fictional, apart from the bench figures quoted elsewhere.
 
 A step-by-step walkthrough of the real system. Nothing is mocked up. Demo data is fictional wherever personal information would otherwise appear.
 
@@ -20,11 +20,9 @@ One click on the desktop shortcut starts everything: the AI model, the voice eng
 
 ## Step 2 · Just talk
 
-The Jarvis orb opens the conversation, by voice or keyboard. Hermes waits for its wake word. I ask for help structuring a project: here, a website for a bakery. Hermes answers with a structured plan, then offers to **delegate** the next step to the right department.
+The Jarvis orb opens the conversation, by voice or keyboard. Hermes waits for its wake word. I ask where the team stands: it answers from what the departments report, and offers to **delegate** as soon as there is work to do.
 
-![A real conversation with Hermes](../../assets/jarvis-conversation.png)
-
-*September screenshot.*
+![A sample conversation with Hermes](../../assets/conversation.png)
 
 > **What it shows:** the director reasons, then routes the work. It knows which department does what.
 
@@ -34,9 +32,7 @@ The Jarvis orb opens the conversation, by voice or keyboard. Hermes waits for it
 
 I ask it to *create a file*. That changes something on my PC: the task is classed **medium risk** and stops. The orb turns amber: **approval required**.
 
-![The action waits for my approval](../../assets/jarvis-approbation.png)
-
-*September screenshot.*
+<p align="center"><img src="../../assets/a-traiter.png" alt="To handle: what awaits my decision, with the Approve button" width="380"></p>
 
 > **What it shows:** the human in the loop. Nothing that changes my machine runs without my explicit click.
 
@@ -44,11 +40,9 @@ I ask it to *create a file*. That changes something on my PC: the task is classe
 
 ## Step 4 · I stay in control
 
-I denied that action (here, the same interface on a phone). Hermes confirms: **"Action denied."** Nothing ran.
+I can approve or refuse from **To handle**, from the Tasks cockpit or from my phone. If I refuse, nothing runs.
 
-<p align="center"><img src="../../assets/jarvis-mobile.png" alt="Action denied, on mobile" width="300"></p>
-
-*September screenshot.*
+<p align="center"><img src="../../assets/mobile.png" alt="Jarvis on a phone: what awaits a decision" width="300"></p>
 
 > **What it shows:** a refusal is final, and the interface also works on a phone.
 
@@ -58,15 +52,11 @@ I denied that action (here, the same interface on a phone). Hermes confirms: **"
 
 I ask for real work: search the web for official password recommendations, then write a 5-point summary. I approve, and each real step shows live: the web search, its duration, even the start of what the tool returned.
 
-![A running task, each step shown live](../../assets/step5-live.png)
+![The Tasks cockpit: to decide, in progress, failures, scheduled, and the detail of a task](../../assets/cockpit-taches.png)
 
-*September screenshot.*
+Two minutes later, Hermes reports what it did. Deliverables are listed with an **Open folder** button. A task that wrote something goes through this card: it says why it waits, with **Integrate** or **Discard**.
 
-Two minutes later, Hermes reports what it did. Deliverables are listed with an **Open folder** button. *(The local folder path is blurred.)*
-
-![The finished task and its deliverables](../../assets/step5-done.png)
-
-*September screenshot.*
+![A task prepared in an isolated copy, ready to be integrated or discarded](../../assets/taches-diff.png)
 
 Today, the **Second brain** shows these links too: who delegates to whom, which agent calls which tool, live.
 
@@ -82,15 +72,13 @@ For this demo, the CV tool runs on an isolated copy with a **fictional candidate
 
 Nora, the HR manager, starts the CV pipeline: Camille writes, Sacha reviews. Round 1 was not validated, so Camille revised the CV, and Sacha validated it in round 2.
 
-![The CV pipeline running: delegations, CV tool calls, review rounds](../../assets/step6-live.png)
+![The Jobs cockpit: the scored offer, the diagnosis, the button that starts the CV and letter](../../assets/cockpit-emploi.png)
 
-The validated CV is delivered (design PDF, PDF readable by recruitment software, Word, and a provenance file linking each line to its source). And because the offer asks for things the profile does not show, **Nora asks the candidate** rather than making them up. *(The local folder path is blurred.)*
+The validated CV is delivered (design PDF, PDF readable by recruitment software, Word, and a provenance file linking each line to its source). And because the offer asks for things the profile does not show, **Nora asks the candidate** rather than making them up. A task that wrote something goes through this card: it says why it waits, with **Integrate** or **Discard**.
 
-![CV validated in round 2, deliverables and Nora's questions](../../assets/step6-done.png)
+![The application tracked in the Jobs cockpit](../../assets/candidatures.png)
 
 <p align="center"><img src="../../assets/step6-cv-fictif.png" alt="The CV generated for the fictional candidate" width="520"><br/><i>The CV produced for the fictional candidate: one page, tailored to the offer, each line traceable.</i></p>
-
-*September screenshots.*
 
 > **What it shows:** a multi-agent pipeline with built-in quality control, and an AI that asks rather than invents.
 
@@ -124,11 +112,9 @@ The weekly schedule is proposed by code from opening hours, contracts, rest days
 
 Everything the team does is measured: who worked when, for how long, with which tools, how many tokens and at what cost. Today this lives in **Systems › Performance**.
 
-![Who worked when, per agent](../../assets/profiling-timeline.png)
+![Systems › Performance: who is working, who worked when](../../assets/systemes-performance.png)
 
-![Activity per agent: time, tools, tokens, cost](../../assets/profiling-agents.png)
-
-*September screenshots.*
+![The detailed profiler: requests, time, tokens, tool calls](../../assets/profilage.png)
 
 > **What it shows:** observability. Nothing is made up; every figure is traceable.
 
@@ -138,9 +124,7 @@ Everything the team does is measured: who worked when, for how long, with which 
 
 The map of the team, its skills and its tools is generated from what is actually installed. I read it in the Second brain. The director knows its team through its own card. Injecting the full map on every turn is expensive, so that is off by default, pending measurement.
 
-![Map of the team and tools](../../assets/jarvis-carte.png)
-
-*September screenshot.*
+![The team: all 47 agents, by department, with their status](../../assets/equipe.png)
 
 > **What it shows:** a map produced by code, never copied by hand.
 

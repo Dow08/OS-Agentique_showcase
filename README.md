@@ -7,7 +7,7 @@
 OS-Agentique turns a Windows 11 workstation into a small, well-run company of AI agents. I talk to a single director, *Hermes*. It understands the request, hands the work to the right department, and every sensitive action waits for my click on **Approve**. Nothing counts as done until it has been verified.
 
 <p align="center">
-  <img src="assets/presentation.en.gif" alt="Animated presentation of OS-Agentique: the idea, the topology, the team, the interface, the progress and the method" width="760">
+  <img src="assets/presentation.en.gif" alt="Animated presentation of OS-Agentique: the idea, the topology, the team, the interface, the progress and the method" width="800">
   <br/>
   <i>The project in under two minutes.</i> <a href="assets/presentation.en.mp4"><b>HD version (mp4)</b></a> · <a href="assets/presentation.fr.mp4">Version française</a>
 </p>
@@ -224,11 +224,16 @@ The interface is called Jarvis; the assistant who answers is called Hermès. The
 
 ![Dashboard: the sphere at the centre, cockpits and offices in orbit, the departments on the left, what awaits a decision on the right](assets/dashboard.png)
 
-> All the screenshots in this section are **real** but taken on the test instance, with **fictional data** (and the interface is in French, as I use it): no screen is accepted there without its fictional fixture.
+> All the screenshots on this page come from the **current Jarvis build** (November 4, 2026), on a test instance, and the interface is in French, as I use it. The agents' names and roles are real; everything else is **fictional**.
 
 **The Second brain** maps the whole system: agents, machines, processes, memory, routines, keys (by name only). When an agent works, the path lights up: Hermes, then the agent, then the tool. On the left, the "Live" column says what is happening in plain words.
 
 ![Second brain: the map of the system, the active path lit up, the Live column](assets/second-cerveau.png)
+
+| A conversation | To handle |
+|---|---|
+| ![A sample conversation with Hermes](assets/conversation.png) | <img src="assets/a-traiter.png" alt="To handle: everything that awaits my decision, with the Approve button" width="300"> |
+| Hermes answers from what the departments report and offers to delegate | everything that awaits my decision, across all departments |
 
 | Tasks cockpit | GRC cockpit |
 |---|---|
@@ -240,12 +245,23 @@ The interface is called Jarvis; the assistant who answers is called Hermès. The
 | ![Jobs cockpit: offers scored by Inès, diagnosis](assets/cockpit-emploi.png) | ![Career coach: the next action of the week and the points to confirm](assets/coach-carriere.png) |
 | scored offers (explainable grid), the diagnosis, "prepare CV and letter"; the "apply" click stays mine | the next action of the week, then plan, skills, quiz and mock interview, within a European framework |
 
+| The team, live | Coworking |
+|---|---|
+| ![Team: all 47 agents by department, who is working, who awaits my decision](assets/equipe.png) | ![Coworking: a shared project, its plan, the team and my constraints](assets/coworking.png) |
+| who is working, on what, who awaits my decision; each agent's card | a shared workshop: I set the goal, Hermes plans, and I can add a constraint at any time |
+
 | Digital commerce cockpit | Back office cockpit |
 |---|---|
 | ![TIK cockpit: decisions, server health, missions and budgets](assets/cockpit-tik.png) | ![Back office cockpit: the document register and the card of a fictional invoice](assets/cockpit-secretariat.png) |
 | the website, the server and the team's missions; nothing is published without me | documents collected, read locally, filed; the director only ever sees counts |
 
+<p align="center"><img src="assets/cockpit-commercial.png" alt="Sales cockpit: gift card prospects, the card of a fictional prospect" width="900"><br/><i>Sales cockpit: the gift card CRM, held by code, next to the Store module.</i></p>
+
 **Systems** gathers what keeps everything running: services, brains, diagnostics, performance by agent and by tool, **supply-chain updates** (every update is a task to approve, never a free-form command), data and encrypted backup, routines, skills, the Forge.
+
+| Updates | Performance |
+|---|---|
+| ![Systems › Updates: the version of each component and the action on offer](assets/systemes-mises-a-jour.png) | ![Profiler: requests, turn time, tokens, who worked when](assets/profilage.png) |
 
 **Day to day:** a command palette (Ctrl+K), an interface that follows the server live, a conversation with attachments (images, text, PDF), a dedicated bar on phones. In the morning, a **digest** written by the director is checked by the code before it reaches me.
 
@@ -353,7 +369,7 @@ A team is more than a delegation tree. OS-Agentique has a **Lounge**: a visible 
 
 ![The Agent Lounge: a retrospective between the Architect, Linus and Grace; on the right, the proposed project and the memory notes to approve](assets/salon.png)
 
-> A real retrospective, captured in early October on an isolated demo; the top bar belongs to an earlier interface.
+> A sample thread on the test instance.
 
 - An agent can **open a ticket**, mention another, attach a document; the thread follows the project it gave rise to.
 - Agents **propose memory notes** and **projects**; nothing is kept or opened without my approval.

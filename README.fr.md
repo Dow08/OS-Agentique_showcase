@@ -7,7 +7,7 @@
 OS-Agentique transforme un poste Windows 11 en une petite entreprise d'agents IA bien organisée. Je parle à un seul directeur, *Hermes*. Il comprend la demande, confie le travail au bon pôle, et toute action sensible attend mon clic sur **Approuver**. Rien n'est considéré comme terminé tant que ce n'est pas vérifié.
 
 <p align="center">
-  <img src="assets/presentation.fr.gif" alt="Présentation animée d'OS-Agentique : l'idée, la topologie, l'équipe, l'interface, les avancées et la méthode" width="760">
+  <img src="assets/presentation.fr.gif" alt="Présentation animée d'OS-Agentique : l'idée, la topologie, l'équipe, l'interface, les avancées et la méthode" width="800">
   <br/>
   <i>Le projet en moins de deux minutes.</i> <a href="assets/presentation.fr.mp4"><b>Version HD (mp4)</b></a> · <a href="assets/presentation.en.mp4">English version</a>
 </p>
@@ -196,7 +196,7 @@ Quand un pôle a besoin d'un avis pointu, il consulte un bureau au lieu de porte
 
 Les 161 spécialistes viennent d'une bibliothèque open source (VoltAgent, licence MIT), à version épinglée et sans agent offensif. Ils reçoivent la demande dans le message : **ni écriture, ni terminal**, et les notes qu'ils proposent attendent ma validation.
 
-<p align="center"><img src="assets/bureau.png" alt="Bureau qualité et sécurité ouvert depuis le Dashboard : l'équipe, qui est en service, et le champ pour confier une demande" width="860"></p>
+<p align="center"><img src="assets/bureau.png" alt="Bureau qualité et sécurité ouvert depuis le Dashboard : l'équipe, qui est en service, et le champ pour confier une demande" width="900"></p>
 
 ### La Forge : les agents écrits, puis notés
 
@@ -224,11 +224,16 @@ L'interface s'appelle Jarvis ; l'assistant qui répond s'appelle Hermès. L'accu
 
 ![Dashboard : la sphère au centre, les cockpits et les bureaux en orbite, à gauche les pôles, à droite ce qui attend une décision](assets/dashboard.png)
 
-> Toutes les captures de cette section sont **réelles** mais prises sur l'instance de test, avec des **données fictives** : aucun écran n'y est accepté sans sa fixture fictive.
+> Toutes les captures de cette page viennent du **build actuel de Jarvis** (4 novembre 2026), sur une instance de test. Les prénoms et rôles des agents sont les vrais ; tout le reste est **fictif**.
 
 **Le Second cerveau** cartographie tout le système : agents, machines, processus, mémoire, routines, clés (par nom seulement). Quand un agent travaille, le chemin s'allume : Hermes, puis l'agent, puis l'outil. À gauche, la colonne « En direct » raconte ce qui se passe, en clair.
 
 ![Second cerveau : la carte du système, le chemin actif allumé, la colonne En direct](assets/second-cerveau.png)
+
+| Une conversation | À traiter |
+|---|---|
+| ![Une conversation d'exemple avec Hermes](assets/conversation.png) | <img src="assets/a-traiter.png" alt="À traiter : tout ce qui attend ma décision, avec le bouton Approuver" width="300"> |
+| Hermes répond à partir de ce que lui disent les pôles et propose de déléguer | tout ce qui attend ma décision, tous pôles confondus |
 
 | Cockpit Tâches | Cockpit GRC |
 |---|---|
@@ -240,12 +245,23 @@ L'interface s'appelle Jarvis ; l'assistant qui répond s'appelle Hermès. L'accu
 | ![Cockpit Emploi : offres notées par Inès, diagnostic](assets/cockpit-emploi.png) | ![Coach carrière : la prochaine action de la semaine et les points à confirmer](assets/coach-carriere.png) |
 | les offres notées (grille explicable), le diagnostic, « préparer CV et lettre » ; le clic « postuler » reste le mien | la prochaine action de la semaine, puis plan, compétences, quiz et entretien blanc, dans un cadre européen |
 
+| L'équipe en direct | Coworking |
+|---|---|
+| ![Équipe : les 47 agents par pôle, qui travaille, qui attend ma décision](assets/equipe.png) | ![Coworking : un chantier partagé, son plan, l'équipe et mes contraintes](assets/coworking.png) |
+| qui travaille, sur quoi, qui attend ma décision ; la fiche de chaque agent | un atelier partagé : je fixe l'objectif, Hermes planifie, et je peux ajouter une contrainte à tout moment |
+
 | Cockpit Commerce digital | Cockpit Secrétariat |
 |---|---|
 | ![Cockpit TIK : décisions, santé du serveur, missions et budgets](assets/cockpit-tik.png) | ![Cockpit Secrétariat : registre des pièces et fiche d'une facture fictive](assets/cockpit-secretariat.png) |
 | le site, le serveur et les missions de l'équipe ; rien n'est publié sans moi | les pièces collectées, lues en local, classées ; le directeur n'en voit que des comptes |
 
+<p align="center"><img src="assets/cockpit-commercial.png" alt="Cockpit Commercial : prospects de la carte cadeau, fiche d'un prospect fictif" width="900"><br/><i>Cockpit Commercial : le CRM de la carte cadeau, tenu par le code, à côté du module Magasin.</i></p>
+
 **Systèmes** regroupe ce qui fait tourner l'ensemble : services, cerveaux, diagnostic, performance par agent et par outil, **mises à jour de la chaîne d'approvisionnement** (chaque mise à jour est une tâche à approuver, jamais une commande libre), données et sauvegarde chiffrée, routines, skills, Forge.
+
+| Mises à jour | Performance |
+|---|---|
+| ![Systèmes › Mises à jour : la version de chaque composant et le geste proposé](assets/systemes-mises-a-jour.png) | ![Profilage : demandes, temps d'un tour, jetons, qui a travaillé quand](assets/profilage.png) |
 
 **Au quotidien :** palette de commandes (Ctrl+K), interface qui suit le serveur en direct, conversation avec pièces jointes (images, texte, PDF), barre dédiée sur téléphone. Le matin, un **digest** rédigé par le directeur est vérifié par le code avant de m'être présenté.
 
@@ -353,7 +369,7 @@ Une équipe n'est pas qu'un arbre de délégation. OS-Agentique a un **Salon** :
 
 ![Le Salon d'agents : une rétrospective entre l'Architecte, Linus et Grace ; à droite, le chantier proposé et les notes de mémoire à valider](assets/salon.png)
 
-> Rétrospective réelle, capturée début octobre sur une démo isolée ; la barre du haut est celle d'une interface précédente.
+> Fil d'exemple sur l'instance de test.
 
 - Un agent peut **ouvrir un ticket**, en mentionner un autre, joindre une pièce ; le fil suit le chantier qu'il a fait naître.
 - Les agents **proposent des notes de mémoire** et des **chantiers** ; rien n'est retenu ni ouvert sans ma validation.
