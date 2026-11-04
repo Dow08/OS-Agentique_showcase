@@ -2,61 +2,75 @@
 
 # A day with Hermes
 
-> The screenshots on this page date from late September 2026, on the previous interface (“thread” home, side panel). Since the mid-October redesign, the home is a ring of departments with one cockpit each: see the [README](../../README.md#jarvis-a-ring-and-eight-cockpits). The steps themselves are unchanged: same single door, same approvals, same verification.
+> **What is dated.** Screenshots marked *September* come from the late-September interface and the old engine. They stay here because they show real model answers on a real machine. The interface has changed since, not the steps: same single door, same approvals, same verification. Recent screenshots are taken on the test instance, with **fictional data**.
 
-A step-by-step walkthrough of the real system. Every screenshot comes from the actual interface with real answers from the local AI model. Nothing is mocked up. Demo data is fictional wherever personal information would otherwise appear.
+A step-by-step walkthrough of the real system. Nothing is mocked up. Demo data is fictional wherever personal information would otherwise appear.
 
 ---
 
 ## Step 1 · Wake it up
 
-One click on the desktop shortcut starts everything: the AI model, the voice engine, the interface. Hermes waits for its wake word.
+One click on the desktop shortcut starts everything: the AI model, the voice engine, the interface. The home is the **Dashboard**: the sphere of what the team knows, the ring of departments, the bureaus, what awaits my decision, and each department's status.
 
-![Home screen: “Say ‘Hermès, …’ followed by your request”](../../assets/jarvis-accueil.png)
+![Dashboard: sphere, ring of departments, bureaus, items to decide](../../assets/dashboard.png)
 
-> **What it shows:** a single entry point for everything. Suggested requests help a first-time user get started.
+> **What it shows:** a single entry point. I turn on the PC and see where things stand.
 
 ---
 
 ## Step 2 · Just talk
 
-I ask for help structuring a project: here, a website for a bakery. Hermes answers in about 15 seconds with a structured plan, then offers to **delegate** the next step to the right department (development or HR).
+The Jarvis orb opens the conversation, by voice or keyboard. Hermes waits for its wake word. I ask for help structuring a project: here, a website for a bakery. Hermes answers with a structured plan, then offers to **delegate** the next step to the right department.
 
 ![A real conversation with Hermes](../../assets/jarvis-conversation.png)
 
-> **What it shows:** the director reasons, then routes the work. He knows which department does what.
+*September screenshot.*
+
+> **What it shows:** the director reasons, then routes the work. It knows which department does what.
 
 ---
 
 ## Step 3 · An action waits for me
 
-I ask him to *create a file*. That changes something on my PC, so the task is rated **medium risk** and stops. The orb turns amber: **approval required**.
+I ask it to *create a file*. That changes something on my PC: the task is classed **medium risk** and stops. The orb turns amber: **approval required**.
 
 ![The action waits for my approval](../../assets/jarvis-approbation.png)
 
-> **What it shows:** human in the loop. Nothing that modifies my machine runs without my explicit click.
+*September screenshot.*
+
+> **What it shows:** the human in the loop. Nothing that changes my machine runs without my explicit click.
 
 ---
 
 ## Step 4 · I stay in control
 
-I refused this action (here, the same interface on a phone). Hermes confirms: **“Action refused.”** Nothing ran.
+I denied that action (here, the same interface on a phone). Hermes confirms: **"Action denied."** Nothing ran.
 
-<p align="center"><img src="../../assets/jarvis-mobile.png" alt="Action refused, on mobile" width="300"></p>
+<p align="center"><img src="../../assets/jarvis-mobile.png" alt="Action denied, on mobile" width="300"></p>
 
-> **What it shows:** a refusal is final, and the interface works just as well on a phone.
+*September screenshot.*
+
+> **What it shows:** a refusal is final, and the interface also works on a phone.
 
 ---
 
 ## Step 5 · Watch the team work
 
-I switch to **Execute** mode and ask for real work: search the web for the official French recommendations on passwords (ANSSI), then write a 5-point summary file. I approve, and every real step appears live: the web search, how long it took, even the start of what the tool returned.
+I ask for real work: search the web for official password recommendations, then write a 5-point summary. I approve, and each real step shows live: the web search, its duration, even the start of what the tool returned.
 
-![A task running, each step shown live](../../assets/step5-live.png)
+![A running task, each step shown live](../../assets/step5-live.png)
 
-Two minutes later, Hermes reports what he did. The deliverables are listed with an **Open folder** button. *(The local folder path is blurred.)*
+*September screenshot.*
+
+Two minutes later, Hermes reports what it did. Deliverables are listed with an **Open folder** button. *(The local folder path is blurred.)*
 
 ![The finished task and its deliverables](../../assets/step5-done.png)
+
+*September screenshot.*
+
+Today, the **Second brain** shows these links too: who delegates to whom, which agent calls which tool, live.
+
+![Second brain: "Live" column, active paths between Hermes, departments and tools](../../assets/second-cerveau.png)
 
 > **What it shows:** transparency. I see *what* is being done, step by step, not a spinning wheel. And the result is a real file, not a promise.
 
@@ -64,49 +78,80 @@ Two minutes later, Hermes reports what he did. The deliverables are listed with 
 
 ## Step 6 · A CV built from a job ad (fictional candidate)
 
-For this demo, the CV tool runs on an isolated copy with a **fictional candidate**, Alex Martin. I paste a (fictional) job ad for a junior SOC analyst and ask: *“Create my CV for this offer.”*
+For this demo, the CV tool runs on an isolated copy with a **fictional candidate**, Alex Martin. I paste a (fictional) junior SOC analyst ad and ask: *"Create my CV for this offer."*
 
-Nora, the HR manager, starts the CV circuit: Camille writes, Sacha reviews. Round 1 was not validated, so Camille revised the CV and Sacha validated it at round 2. When the local model struggled, a step was automatically handed over to Claude: that is the fallback visible in the task list.
+Nora, the HR manager, starts the CV pipeline: Camille writes, Sacha reviews. Round 1 was not validated, so Camille revised the CV, and Sacha validated it in round 2.
 
-![The CV circuit running: delegations, CV tool calls, review rounds](../../assets/step6-live.png)
+![The CV pipeline running: delegations, CV tool calls, review rounds](../../assets/step6-live.png)
 
-The validated CV is delivered (design PDF, ATS-friendly PDF, Word, plus a provenance file tracing every line back to its source). And because the offer asks for things the profile does not show (technical English, Microsoft Sentinel…), **Nora asks the candidate** instead of inventing them. *(The local folder path is blurred.)*
+The validated CV is delivered (design PDF, PDF readable by recruitment software, Word, and a provenance file linking each line to its source). And because the offer asks for things the profile does not show, **Nora asks the candidate** rather than making them up. *(The local folder path is blurred.)*
 
-![CV validated at round 2, deliverables and Nora's questions](../../assets/step6-done.png)
+![CV validated in round 2, deliverables and Nora's questions](../../assets/step6-done.png)
 
-<p align="center"><img src="../../assets/step6-cv-fictif.png" alt="The generated CV of the fictional candidate" width="520"><br/><i>The CV produced for the fictional candidate: one page, tailored to the offer, every line traceable.</i></p>
+<p align="center"><img src="../../assets/step6-cv-fictif.png" alt="The CV generated for the fictional candidate" width="520"><br/><i>The CV produced for the fictional candidate: one page, tailored to the offer, each line traceable.</i></p>
 
-> **What it shows:** a multi-agent pipeline with built-in quality control, and an AI that asks instead of inventing.
+*September screenshots.*
+
+> **What it shows:** a multi-agent pipeline with built-in quality control, and an AI that asks rather than invents.
 
 ---
 
-## Step 7 · Check the health of the system
+## Step 7 · Ask a specialist
 
-Everything the team does is measured, read from the engine's own records: who worked when, for how long, with which tools, how many tokens and at what cost. Only Claude, the cloud fallback, costs anything: the local brain is free.
+A question about debugging, architecture or law? I hand it to a **bureau**. Code preselects candidates, the manager picks, the agent answers, the manager checks. Department agents can do the same when they hit a topic outside their trade.
+
+![The quality & security bureau: team, manager, agents in service or on standby, request to hand over](../../assets/bureau.png)
+
+> **What it shows:** a fleet of specialists, without power. They advise; they neither write nor execute.
+
+---
+
+## Step 8 · Run a store
+
+In the morning, the **Store** dashboard says what needs action: a temperature reading out of range, a schedule to prepare, a figure to enter, a mandatory visit coming up. Everything is computed by code; nothing is sent.
+
+![Store dashboard: weekly brief, items to look at, one action per item](../../assets/magasin-tableau.png)
+
+The weekly schedule is proposed by code from opening hours, contracts, rest days and absences. Thomas adjusts it, Claire reviews it, and nothing is saved without my click.
+
+![Staff schedule: weekly grid, coverage and rest alerts](../../assets/magasin-planning.png)
+
+> **What it shows:** the system serves a real trade, with rules that affect people. Code computes, agents review, I validate.
+
+---
+
+## Step 9 · Check the system's health
+
+Everything the team does is measured: who worked when, for how long, with which tools, how many tokens and at what cost. Today this lives in **Systems › Performance**.
 
 ![Who worked when, per agent](../../assets/profiling-timeline.png)
 
 ![Activity per agent: time, tools, tokens, cost](../../assets/profiling-agents.png)
 
-> **What it shows:** observability. Nothing is invented; every figure can be traced back.
+*September screenshots.*
+
+> **What it shows:** observability. Nothing is made up; every figure is traceable.
 
 ---
 
-## Step 8 · The system knows itself
+## Step 10 · The system knows itself
 
-Before each decision, the director receives a **real map** of his team, his skills and his tools, generated from what is actually installed.
+The map of the team, its skills and its tools is generated from what is actually installed. I read it in the Second brain. The director knows its team through its own card. Injecting the full map on every turn is expensive, so that is off by default, pending measurement.
 
 ![Map of the team and tools](../../assets/jarvis-carte.png)
 
-> **What it shows:** the agent does not guess what it can do; it is told, from the real state of the machine.
+*September screenshot.*
+
+> **What it shows:** a map produced by code, never copied by hand.
 
 ---
 
 ## Behind the scenes
 
 - every hour, an automatic backup of the whole system;
-- a scan for secrets before each backup: a password or key **blocks** it;
-- every morning, a job watch that runs by itself and prepares its summary.
+- a scan for secrets and real names before each backup: a password, a key or a name **blocks** it;
+- routines bounded by caps, with a log: nightly link check, Brain rebuild, self-check;
+- a scheduled job-offer watch that prepares its summary.
 
 ---
 

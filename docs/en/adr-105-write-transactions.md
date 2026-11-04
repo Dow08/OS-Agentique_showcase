@@ -6,6 +6,8 @@ Second ADR published in full. It closes two gaps in the kernel: an approved writ
 
 *Translation of the French original, reproduced verbatim from the private repository's decision log (`DECISIONS.md`). File paths are those of the private repository.*
 
+> **Note of 4 November 2026.** The text below is the decision as written; it has not been amended since. Since ADR-144 (28 October 2026), the Hermes Agent engine has been removed: a tool call is now checked in the **single guard chain of the native engine** (`run-tool`), no longer through Hermes Agent hooks. The transaction itself has not changed. `agent-natif` was added to the executors in `policies/transactions.json`, where `hermes-agent` remains only as an alias.
+
 ---
 
 ## ADR-105 — Kernel: write transactions (P1-2) and policy as data (P1-4)

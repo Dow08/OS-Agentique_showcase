@@ -2,52 +2,66 @@
 
 # Design & architecture
 
-How I thought about OS-Agentique, and how it works, without going too deep into the code.
+How I thought about OS-Agentique and how it works today, without going too deep into the code. State as of 4 November 2026.
 
 ## 1. The problem I wanted to solve
 
-I wanted AI agents that do real work on my machine: write code, prepare documents, look for jobs, support security work. But I did not want to *hope* they behave. I wanted to **know**, the way a manager knows what their team is doing.
+I wanted AI agents doing real work on my machine: writing code, preparing documents, searching for a job, supporting security work, then running a store. But I did not want to *hope* they would behave. I wanted to **know**, the way a manager knows what the team is doing.
 
 That gave me three questions, and the whole system answers them:
 
 1. **Who decides?** One director talks to me; departments do the work.
 2. **What is allowed?** Every task gets a risk level; anything that can change something waits for me.
-3. **How do I know it worked?** Results are checked, not assumed.
+3. **How do I know it worked?** The result is verified, not assumed.
 
 ## 2. Six verbs
 
-Early on, I organised the whole system around six verbs. Every component has exactly one job:
+Early on, I organised the whole system around six verbs. Every component has exactly one role:
 
 ```mermaid
 flowchart LR
-    T["🧠 THINK<br/>the agents reason"] --> C["🔀 CHOOSE<br/>pick the right brain"]
-    C --> A["🛠️ ACT<br/>executors do the work"]
+    T["🧠 THINK<br/>agents reason"] --> C["🔀 CHOOSE<br/>the right brain"]
+    C --> A["🛠️ ACT<br/>executors work"]
     A --> P["✅ PROVE<br/>verification"]
     P --> CO["🔊 COMMUNICATE<br/>voice & interface"]
     CO --> L["📚 LEARN<br/>memory & lessons"]
     L --> T
 ```
 
-## 3. Three layers: do not rebuild what already exists
+## 3. The layers: from a borrowed engine to my own
 
-A key decision on day 2: instead of writing my own agent engine, I built **around** an existing open-source one, [Hermes Agent](https://github.com/NousResearch/hermes-agent). My work is the layer that turns a single agent into an organised, supervised team.
+For six weeks, I built **around** an open-source engine, Hermes Agent (Nous Research). That was the right choice at the start: it spared me writing what already existed, and let me focus on the layer that turns a lone agent into a supervised team.
+
+On 28 October, I removed it from the code (ADR-144). The story is in [How it was built](build-log.md#week-6--26-to-29-october-leaving-the-engine). The agent loop now lives in the repository. Hermes remains the director's name.
 
 ```mermaid
 flowchart TB
-    subgraph L3["OS-Agentique: my work"]
-        direction LR
-        U["Jarvis interface<br/>voice + screen"]
-        CORE["Core: policy → execution → verification"]
-        TEAM["Team of 37 agents<br/>+ rules + memory"]
+    subgraph L5["Interface"]
+        U["Jarvis: voice, Dashboard, cockpits, approvals"]
     end
-    subgraph L2["Hermes Agent: open-source engine"]
-        E["profiles · skills · sessions"]
+    subgraph L4["Team"]
+        TEAM["47 named agents, 9 departments<br/>+ 9 bureaus of specialists"]
     end
-    subgraph L1["Windows 11 + local GPU"]
-        W["files · processes · local AI model"]
+    subgraph L3["Core and kernel"]
+        CORE["policy → execution → verification<br/>capability tokens · signed log · scheduler · transactions"]
     end
-    L3 --> L2 --> L1
+    subgraph L2["Native engine"]
+        N["agent loop · single guard chain<br/>sessions · three-level memory"]
+    end
+    subgraph L1["Machine"]
+        W["Windows 11 · RTX 4080<br/>local model · Claude by subscription"]
+    end
+    L5 --> L4 --> L3 --> L2 --> L1
 ```
+
+The engine knows two families of brains:
+
+- **API**: my loop drives the model directly (Ollama locally, any OpenAI-compatible service, Anthropic by key).
+- **Harness**: the Claude client (`claude -p`) runs the loop, and my tools are served to it by an MCP server. It starts with no native tool. If it exposes one at start-up, the turn is refused.
+
+Either way, a tool call goes through the same function. Brains and engine are data: changing provider needs no code.
+
+Each turn gets a **regime** decided by the code: conversation (8 turns, 20,000 context tokens), mission (12 turns, 32,000), workshop (40 turns, 48,000).
 
 ## 4. The life of a task
 
@@ -57,55 +71,68 @@ Every request, whether it comes from voice, keyboard or another agent, goes thro
 stateDiagram-v2
     direction LR
     [*] --> Received
-    Received --> RiskCheck
-    RiskCheck --> Ready: low risk
-    RiskCheck --> WaitingApproval: medium / high risk
+    Received --> RiskAssessment
+    RiskAssessment --> Ready: low risk
+    RiskAssessment --> WaitingApproval: medium / high risk
     WaitingApproval --> Ready: I approve
-    WaitingApproval --> Refused: I refuse
+    WaitingApproval --> Denied: I deny
     Ready --> Running
-    Running --> Verification
-    Verification --> Completed: checks pass
-    Verification --> Failed: checks fail
+    Running --> Verifying
+    Verifying --> WaitingDiff: isolated write
+    WaitingDiff --> Completed: I approve the diff
+    WaitingDiff --> Denied: I discard the diff
+    Verifying --> Completed: checks pass
+    Verifying --> Failed: checks fail
     Completed --> [*]
-    Refused --> [*]
+    Denied --> [*]
     Failed --> [*]
 ```
 
-Three rules I never break:
+Four rules I never break:
 
-- **The risk can only go up.** The risk of a task is the highest of what was requested and what the task can *actually* do. Nobody, not even an agent, can declare a dangerous task “low risk” to skip my approval.
-- **An approval is tied to what I saw.** When I click “Approve”, I approve *that exact action*. If anything changes after my click, it is rejected.
-- **“Done” needs proof.** The system checks that the file exists, the command succeeded and nothing leaked, before marking a task complete.
+- **Risk can only go up.** A task's risk is the highest of what is requested and what the task can *actually* do. Nobody, not even an agent, can declare a dangerous task "low" to avoid my approval.
+- **An approval is bound to what I saw.** When I click "Approve", I approve *exactly that action*. If anything changes after my click, it is rejected.
+- **A write is a transaction.** A task that changes code works in an isolated worktree. Its diff is shown to me, and only its fingerprint can be approved.
+- **"Done" requires proof.** The system checks that the file exists, that the command succeeded and that nothing leaked, before closing the task.
 
 ## 5. Security in layers
 
-I come from cybersecurity, so the system is designed like a defended network: several independent barriers, so that one failure is not enough.
+I retrained in cybersecurity, so the system is designed like a defended network, with several independent barriers, so that one failure is not enough.
 
-| Barrier | What it stops |
+| Barrier | What it prevents |
 |---|---|
-| **Org chart** | only designated workers can write; managers and the director can only read and delegate |
+| **Org chart** | only six workers can write; managers and the director read and delegate |
 | **Risk policy + approval** | nothing that can change something runs without my click |
-| **Access matrix** | my personal data (CV) is reachable only by the HR department; a security agent guards it |
-| **No web + personal data together** | an agent that browses the web never holds my personal data in the same turn, so a malicious web page cannot make it leak |
-| **Drift alerts** | automatic alerts if a task leaves its scope while running |
-| **Secret scanner** | every backup is scanned; any password or key blocks the commit |
-| **Local only** | the interface listens on the PC only, never on the network |
+| **Capability token** | every tool call is checked before its effect, against a token signed by the kernel |
+| **Single guard chain** | tool of the turn, schema, path, emergency stop, token, registry, output bound, secret masking: one path, for every brain |
+| **Imported agents** | the 161 bureau specialists neither write nor execute, whatever their token; a modified file is refused at load time |
+| **Never the web and my data together** | an agent reading the web never holds personal or named data: a malicious page cannot get them out |
+| **The eye** | an attached image is read by an agent with no tools; the director receives a card, never the image |
+| **Brain by data class** | the HR department and agents reading a named schedule only run on the local model or Claude, otherwise refused; the Red Team, Hugo, Hélène and Aurèle are locked to local |
+| **Drift alerts** | automatic alerts if a task leaves its frame during execution |
+| **Secret detector** | every backup is scanned; a password, a key or a real staff name blocks the commit |
+| **Local only** | the interface only listens on the PC, never on the network |
 
-## 6. How I work: decisions written down, proof required
+**What is not a barrier, plainly stated.** Since ADR-144, everything runs under my Windows account: the separate `hermes-agents` account and its runner, tried in late October, were removed. A writing agent's terminal is bounded (duration, output, deny list), but that filter reads text: a command built at run time gets past it. **This is not operating-system isolation.** The real bound is the worktree and the diff I approve.
 
-- **114 decision records (ADRs)** (as of 17 October 2026). Each one states the context, the decision, the rejected alternatives and the *evidence*. When something is decided, it is written, so the next session (human or AI) does not undo it.
-- **A gate before every feature**: *What? Why? Interface? Security? Test? Rollback?*, answered **before** writing code.
-- **1,624 unit tests** (counted on 17 October 2026), plus *contract tests* that check every external tool still behaves as expected after an update.
-- **Deterministic first.** Whatever is mechanical is done by a plain script, not by an AI. AI is kept for what really needs judgement.
-- **Reproducible.** One PowerShell command rebuilds the whole environment on a fresh PC.
+## 6. How I work: written decisions, required proof
+
+- **148 architecture decisions (ADRs)** as of 4 November 2026. Each gives the context, the decision, the rejected alternatives and the *proof*. What is decided is written down, so the next session (human or AI) does not undo it.
+- **A gate before each feature**: *What? Why? Interface? Security? Test? Rollback?*, answered **before** writing code.
+- **Tests at three levels**: 3,293 unit tests green at the last full run (3 November, 1 skipped), 681 green Playwright runs, and 38 *contract test* files that check every external tool still behaves as expected.
+- **A zero-tolerance security gate** for the engine: 36 cases out of 36, re-run after any change to the agent loop.
+- **Deterministic first.** Anything mechanical is done by a plain script, not by an AI. The store schedule, for instance, is computed by code; agents review it.
+- **Reproducible.** One command installs everything, with three profiles (desktop, laptop, server). An encrypted export handles a move. Proof on a blank machine remains to be done.
 
 ## 7. What I learned along the way
 
 Honest lessons that shaped the design:
 
-- **AI can announce work without doing it.** Hermes once answered “I'm launching a search…” and called no tool at all. Since then, the interface shows every real step live, and says explicitly when an action was only *announced*.
-- **Written rules are not enforced rules.** A cross-audit showed that my risk rule existed in the documentation but was not applied in one code path. I fixed it, and I wrote down the principle: a rule counts only if a test proves it.
-- **A good model is not always the biggest one.** I benchmarked several local models on agent tasks. The one I kept scored 9/10 and answers a simple exchange in about 5 seconds on my GPU.
+- **An AI can announce work without doing it.** Hermes once answered "I'm launching a search…" without calling a single tool. Since then, the interface shows every real step live, and states plainly when an action was only *announced*.
+- **A written rule is not an enforced rule.** A cross-audit showed that my risk rule existed in the documentation but was not applied in one code path. I fixed it and wrote down the principle: a rule only counts if a test proves it.
+- **The right model is not always the biggest.** I compared several local models on agent tasks. The one I kept scored 9/10.
+- **A dependency can stop everything without warning.** An upstream engine update, combined with the team's growth, blocked every turn for several hours. I had put several workarounds in place; none fixed the cause.
+- **"Delivered" must mean connected.** The first version of the Store was declared validated while several integrations were fake. A product audit showed it. The department's document now says what is done and what is not connected.
 
 ---
 

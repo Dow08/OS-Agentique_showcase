@@ -4,6 +4,8 @@
 
 Un ADR « phare », publié en entier pour montrer à quoi ressemble une décision dans ce projet : le contexte qui l'a rendue nécessaire, la porte WHAT / WHY / INTERFACE / SECURITY / TEST / ROLLBACK, les **limites dites honnêtement**, la preuve réelle, et ce qui reste à faire. C'est la décision qui a déplacé la sécurité de l'écran vers le noyau : chaque appel d'outil d'un agent est contrôlé **avant son effet** contre un jeton signé par le noyau.
 
+> **Note du 4 novembre 2026.** Le texte ci-dessous est celui de la décision, sans retouche ; il n'a pas été amendé depuis. Depuis l'ADR-144 (28 octobre 2026), le moteur Hermes Agent a été retiré : le contrôle se fait dans la **chaîne de garde unique du moteur natif** (`run-tool`), et non plus par des hooks d'Hermes Agent. Ce qui change donc par rapport à ce texte : les hooks `pre_tool_call`, `pep-hook.ts`, le cron d'Hermes et la commande `hermes -p` n'existent plus. La décision (`pep.ts`) est la même, avec une règle ajoutée : un agent importé d'un bureau n'écrit ni n'exécute jamais. Les limites (a) et (c) restent vraies, et le compte séparé prévu par P0-1 a été abandonné : tout tourne sous le compte de l'opérateur (ADR-144).
+
 ---
 
 ## ADR-081 — Jetons de capacité : ce que le kernel accorde à un tour est vérifié à chaque appel d'outil (audit 07 P1-1)

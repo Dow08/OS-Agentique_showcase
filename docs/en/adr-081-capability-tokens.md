@@ -6,6 +6,8 @@ A “flagship” ADR, published in full to show what a decision looks like in th
 
 *Translation of the French original, which is reproduced verbatim from the private repository's decision log (`DECISIONS.md`). File paths are those of the private repository.*
 
+> **Note of 4 November 2026.** The text below is the decision as written; it has not been amended since. Since ADR-144 (28 October 2026), the Hermes Agent engine has been removed: the check now happens in the **single guard chain of the native engine** (`run-tool`), no longer through Hermes Agent hooks. What therefore differs from this text: the `pre_tool_call` hooks, `pep-hook.ts`, Hermes's cron and the `hermes -p` command no longer exist. The decision (`pep.ts`) is the same, with one added rule: an agent imported into a bureau never writes or executes. Limits (a) and (c) still hold, and the separate account planned by P0-1 was abandoned: everything runs under the operator's account (ADR-144).
+
 ---
 
 ## ADR-081 — Capability tokens: what the kernel grants to a turn is checked on every tool call (audit 07, P1-1)

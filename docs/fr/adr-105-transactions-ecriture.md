@@ -4,6 +4,8 @@
 
 Second ADR publié en entier. Il règle deux trous du noyau : une tâche d'écriture approuvée écrivait directement dans mes fichiers (désormais : un **worktree isolé**, un diff, une **seconde approbation liée à l'empreinte du diff**), et les règles de risque vivaient dans le code (désormais : un **fichier scellé** que l'on peut lire, simuler et tester, et qui ne peut que relever le risque, jamais l'abaisser).
 
+> **Note du 4 novembre 2026.** Le texte ci-dessous est celui de la décision, sans retouche ; il n'a pas été amendé depuis. Depuis l'ADR-144 (28 octobre 2026), le moteur Hermes Agent a été retiré : le contrôle d'un appel d'outil se fait dans la **chaîne de garde unique du moteur natif** (`run-tool`), et non plus par des hooks d'Hermes Agent. La transaction elle-même n'a pas changé. `agent-natif` s'est ajouté à la liste des exécuteurs de `policies/transactions.json`, et `hermes-agent` n'y reste que comme alias.
+
 ---
 
 ## ADR-105 — Kernel : transactions d'écriture (P1-2) et politique en données (P1-4)
